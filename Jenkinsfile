@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Validate') {
             steps {
-                dir('scripts') {
+                dir('my-app') {
                     sh 'mvn validate'
                 }
             }
         }
         stage('Test') {
             steps {
-               dir('scripts') {
+               dir('my-app') {
                     sh 'mvn test'
                 }
             }
