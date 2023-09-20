@@ -11,13 +11,15 @@ public class LinkedList<T> {
         if(this.head == null){
             this.head = new Node<T>(value);
         }
-        Node<T> previous = null;
-        Node<T> current = this.head;
-        while(current != null) {
-            previous = current;
-            current = current.getNextNode();
+        else {
+            Node<T> previous = null;
+            Node<T> current = this.head;
+            while(current != null) {
+                previous = current;
+                current = current.getNextNode();
+            }
+            previous.setNextNode(new Node<T>(value));
         }
-        previous.setNextNode(new Node<T>(value));
     }
 
     public boolean contains(Comparable<T> value){
@@ -27,6 +29,23 @@ public class LinkedList<T> {
         while(current != null && !current.getValue().equals(value)){
             current = current.getNextNode();
         }
-        return current != null;
+        return current != null && current.getValue().equals(value);
+    }
+
+    public void remove(Comparable<T> value) {
+        if(this.head != null){
+            Node<T> previous = null;
+            Node<T> current = this.head;
+            while(current != null && !current.getValue().equals(value)) {
+                previous = current;
+                current = current.getNextNode();
+            }
+            if(this.head == current){
+                this.head = current.getNextNode();
+            }
+            else{
+                previous.setNextNode(current.getNextNode());
+            }
+        }
     }
 }
