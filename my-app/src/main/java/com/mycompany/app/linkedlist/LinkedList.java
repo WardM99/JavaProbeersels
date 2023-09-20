@@ -1,6 +1,6 @@
 package com.mycompany.app.linkedlist;
 
-public class LinkedList<T> {
+public class LinkedList<T> implements LinkedListInterface<T> {
     private Node<T> head;
 
     LinkedList() {

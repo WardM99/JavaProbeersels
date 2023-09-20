@@ -25,7 +25,7 @@ public class LinkedListTest {
     }
     @Test
     public void addTwoElements() {
-        LinkedList<Integer> l = new LinkedList<Integer>();
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(5);
         l.add(6);
         assertTrue(l.contains(5));
@@ -33,7 +33,7 @@ public class LinkedListTest {
     }
     @Test
     public void removeElement(){
-        LinkedList<Integer> l = new LinkedList<Integer>();
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(5);
         l.add(6);
         l.add(7);
@@ -44,7 +44,7 @@ public class LinkedListTest {
     }
     @Test
     public void removeHeadElement(){
-        LinkedList<Integer> l = new LinkedList<Integer>();
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(5);
         l.add(6);
         l.remove(5);
