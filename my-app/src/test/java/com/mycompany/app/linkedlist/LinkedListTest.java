@@ -74,7 +74,7 @@ public class LinkedListTest {
         n = l.getNext();
         assertTrue(n.equals(6));
         n = l.getNext();
-        assertTrue(n==null);
+        assertTrue(n.equals(5));
     }
     @Test
     public void testSort(){

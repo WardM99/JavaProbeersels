@@ -2,9 +2,11 @@ package com.mycompany.app.linkedlist;
 
 public class LinkedList<T> implements LinkedListInterface<T> {
     private Node<T> head;
+    private Node<T> currentNode;
 
     LinkedList() {
         this.head = null;
+        this.currentNode = null
     }
 
     public void add(Comparable<T> value) {
@@ -85,7 +87,14 @@ public class LinkedList<T> implements LinkedListInterface<T> {
     }
 
     public T getNext() {
-        return (T) head.getValue();
+        if(this.head == null)
+            return null;
+        if(this.currentNode == null)
+            this.currentNode = this.head;
+              
+        T value = (T) head.getValue();
+        this.currentNode = this.currentNode.getNextNode()
+        return value;
     }
 
     public Node<T> getHead() {
