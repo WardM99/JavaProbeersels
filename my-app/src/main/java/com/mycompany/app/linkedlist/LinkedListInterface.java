@@ -5,5 +5,6 @@ public interface LinkedListInterface<T> {
     public boolean contains(Comparable<T> value);
     public void remove(Comparable<T> value);
     public void sort();
+    public T getNext();
     public Node<T> getHead();
 }

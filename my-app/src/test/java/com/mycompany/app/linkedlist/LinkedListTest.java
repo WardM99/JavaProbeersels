@@ -52,6 +52,18 @@ public class LinkedListTest {
         assertTrue(l.contains(6));
     }
     @Test
+    public void testGetNext(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        Integer n = l.getNext();
+        assertTrue(n.equals(5));
+        n = l.getNext();
+        assertTrue(n.equals(6));
+        n = l.getNext();
+        assertTrue(n==null);
+    }
+    @Test
     public void testSort(){
         LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(45);
