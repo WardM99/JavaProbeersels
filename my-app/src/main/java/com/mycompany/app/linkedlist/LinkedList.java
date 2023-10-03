@@ -85,7 +85,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
     }
 
     public T getNext() {
-        return head.getValue();
+        return (T) head.getValue();
     }
 
     public Node<T> getHead() {
