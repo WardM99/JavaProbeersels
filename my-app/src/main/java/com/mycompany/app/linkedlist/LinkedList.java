@@ -92,7 +92,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
         if(this.currentNode == null)
             this.currentNode = this.head;
               
-        T value = (T) head.getValue();
+        T value = (T) currentNode.getValue();
         this.currentNode = this.currentNode.getNextNode();
         return value;
     }

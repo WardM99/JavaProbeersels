@@ -71,7 +71,9 @@ public class LinkedListTest {
         l.add(6);
         Integer n = l.getNext();
         assertTrue(n.equals(5));
+        System.out.println(n);
         n = l.getNext();
+        System.out.println(n);
         assertTrue(n.equals(6));
         n = l.getNext();
         assertTrue(n.equals(5));
