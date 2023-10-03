@@ -53,7 +53,7 @@ public class LinkedListTest {
     }
     @Test
     public void testGetNextNothing(){
-        LinkedListInterface<Integer> l = new LinkedList<Integer>();\
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
         Integer n = l.getNext();
         assertTrue(n==null);
     }
