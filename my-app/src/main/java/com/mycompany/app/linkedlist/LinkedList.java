@@ -6,7 +6,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 
     LinkedList() {
         this.head = null;
-        this.currentNode = null
+        this.currentNode = null;
     }
 
     public void add(Comparable<T> value) {
@@ -93,7 +93,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             this.currentNode = this.head;
               
         T value = (T) head.getValue();
-        this.currentNode = this.currentNode.getNextNode()
+        this.currentNode = this.currentNode.getNextNode();
         return value;
     }
 
