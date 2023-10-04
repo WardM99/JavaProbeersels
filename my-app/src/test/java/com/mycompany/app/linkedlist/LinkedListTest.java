@@ -25,7 +25,7 @@ public class LinkedListTest {
     }
     @Test
     public void addTwoElements() {
-        LinkedList<Integer> l = new LinkedList<Integer>();
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(5);
         l.add(6);
         assertTrue(l.contains(5));
@@ -33,7 +33,7 @@ public class LinkedListTest {
     }
     @Test
     public void removeElement(){
-        LinkedList<Integer> l = new LinkedList<Integer>();
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(5);
         l.add(6);
         l.add(7);
@@ -44,11 +44,53 @@ public class LinkedListTest {
     }
     @Test
     public void removeHeadElement(){
-        LinkedList<Integer> l = new LinkedList<Integer>();
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(5);
         l.add(6);
         l.remove(5);
         assertFalse(l.contains(5));
         assertTrue(l.contains(6));
+    }
+    @Test
+    public void testGetNextNothing(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        Integer n = l.getNext();
+        assertTrue(n==null);
+    }
+    @Test
+    public void testGetNext(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        Integer n = l.getNext();
+        assertTrue(n.equals(5));
+    }
+    @Test
+    public void testGetNextMultiple(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        Integer n = l.getNext();
+        assertTrue(n.equals(5));
+        System.out.println(n);
+        n = l.getNext();
+        System.out.println(n);
+        assertTrue(n.equals(6));
+        n = l.getNext();
+        assertTrue(n.equals(5));
+    }
+    @Test
+    public void testSort(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(45);
+        l.add(23);
+        l.add(98);
+        l.add(17);
+        l.add(65);
+        l.add(89);
+        l.add(100);
+        l.add(34);
+        l.add(78);
+        l.add(56);
+        l.sort();
     }
 }

@@ -1,10 +1,12 @@
 package com.mycompany.app.linkedlist;
 
-public class LinkedList<T> {
+public class LinkedList<T> implements LinkedListInterface<T> {
     private Node<T> head;
+    private Node<T> currentNode;
 
     LinkedList() {
         this.head = null;
+        this.currentNode = null;
     }
 
     public void add(Comparable<T> value) {
@@ -47,5 +49,55 @@ public class LinkedList<T> {
                 previous.setNextNode(current.getNextNode());
             }
         }
+    }
+
+    public void sort() {
+        if(this.head != null){
+            Node<T> pivot = this.head;
+            T pivotValue = (T) pivot.getValue();
+            Node<T> current = this.head.getNextNode();
+            LinkedList<T> left = new LinkedList<T>();
+            LinkedList<T> right = new LinkedList<T>();
+            while(current != null){
+                Comparable<T> currentValue = current.getValue();
+                //System.out.println(currentValue);
+                if(currentValue.compareTo(pivotValue) < 0)
+                    left.add(current.getValue());
+                else
+                    right.add(current.getValue());
+                current = current.getNextNode();
+            }
+            left.sort();
+            right.sort();
+            if(left.getHead() == null){
+                this.head = pivot;
+            }
+            else{
+                this.head = left.getHead();
+                current = this.head;
+                Node<T> previous = null;
+                while(current != null){
+                    previous = current;
+                    current = current.getNextNode();
+                }
+                previous.setNextNode(pivot);
+            }
+            pivot.setNextNode(right.getHead());
+        }
+    }
+
+    public T getNext() {
+        if(this.head == null)
+            return null;
+        if(this.currentNode == null)
+            this.currentNode = this.head;
+              
+        T value = (T) currentNode.getValue();
+        this.currentNode = this.currentNode.getNextNode();
+        return value;
+    }
+
+    public Node<T> getHead() {
+        return head;
     }
 }

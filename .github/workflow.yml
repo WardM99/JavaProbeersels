@@ -1,0 +1,27 @@
+name: Backend
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+defaults:
+  run:
+    working-directory: my-app
+
+jobs:
+  Validate: 
+    runs-on: ubuntu-latest
+    container: maven:3.9.4-eclipse-temurin-17-alpine
+    steps:
+      - uses: actions/checkout@v2
+      - run: mvn validate
+  Test:
+    needs: [Validate]
+    container: maven:3.9.4-eclipse-temurin-17-alpine
+    steps:
+      - uses: actions/checkout@v2
+      - run: mvn test
