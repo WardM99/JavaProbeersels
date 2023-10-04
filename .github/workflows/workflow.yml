@@ -1,4 +1,4 @@
-name: Backend
+name: Workflow
 
 on:
   pull_request:
@@ -17,19 +17,19 @@ jobs:
     runs-on: ubuntu-latest
     container: maven:3.9.4-eclipse-temurin-17-alpine
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: mvn validate
   Compile:
     needs: [Validate]
     runs-on: ubuntu-latest
     container: maven:3.9.4-eclipse-temurin-17-alpine
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: mvn compile
   Test:
     needs: [Compile]
     runs-on: ubuntu-latest
     container: maven:3.9.4-eclipse-temurin-17-alpine
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: mvn test
