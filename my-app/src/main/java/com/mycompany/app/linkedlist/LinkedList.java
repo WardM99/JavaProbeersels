@@ -101,7 +101,17 @@ public class LinkedList<T> implements LinkedListInterface<T> {
     }
 
     public LinkedList<T> reverseLinkedList() {
-        return null;
+        LinkedList<T> reverse = this.clone();
+        Node<T> prev, next, current;
+        current = reverse.head;
+        while(current != null){
+            next = current.getNextNode();
+            current.setNextNode(prev);
+            prev = current;
+            current = next;
+        }
+        reverse.head = prev;
+        return reverse;
     }
 
     public Node<T> getHead() {
