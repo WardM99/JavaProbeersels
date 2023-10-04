@@ -71,11 +71,54 @@ public class LinkedListTest {
         l.add(6);
         Integer n = l.getNext();
         assertTrue(n.equals(5));
-        System.out.println(n);
         n = l.getNext();
-        System.out.println(n);
         assertTrue(n.equals(6));
         n = l.getNext();
+        assertTrue(n.equals(5));
+    }
+    @Test
+    public void testGetNextMultipleWithRemove(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        l.add(8);
+        l.add(9);
+        Integer n = l.getNext();
+        assertTrue(n.equals(5));
+        l.remove(6);
+        n = l.getNext();
+        assertFalse(n.equals(6));
+        assertTrue(n.equals(7));
+    }
+    @Test
+    public void testGetNextRemoveHead(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        l.add(8);
+        l.add(9);
+        Integer n = l.getNext();
+        assertTrue(n.equals(5));
+        l.remove(5);
+        n = l.getNext();
+        assertTrue(n.equals(6));
+    }
+    @Test
+    public void testGetNextRemoveLast(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        l.add(8);
+        l.add(9);
+        Integer n = 0;
+        for(int i = 0; i < 4; i++)
+            n = l.getNext();
+        l.remove(9);
+        n = l.getNext();
+        assertFalse(n.equals(9));
         assertTrue(n.equals(5));
     }
     @Test

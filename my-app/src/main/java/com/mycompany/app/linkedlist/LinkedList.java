@@ -48,6 +48,9 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             else{
                 previous.setNextNode(current.getNextNode());
             }
+            if(this.currentNode == current) {
+                this.currentNode = current.getNextNode();
+            }
         }
     }
 
