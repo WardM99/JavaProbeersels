@@ -21,6 +21,7 @@ jobs:
       - run: mvn validate
   Test:
     needs: [Validate]
+    runs-on: ubuntu-latest
     container: maven:3.9.4-eclipse-temurin-17-alpine
     steps:
       - uses: actions/checkout@v2
