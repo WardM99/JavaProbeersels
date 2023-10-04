@@ -100,6 +100,10 @@ public class LinkedList<T> implements LinkedListInterface<T> {
         return value;
     }
 
+    public LinkedList<T> reverseLinkedList() {
+        return null;
+    }
+
     public Node<T> getHead() {
         return head;
     }
