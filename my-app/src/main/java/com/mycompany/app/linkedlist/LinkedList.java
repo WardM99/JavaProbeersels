@@ -117,7 +117,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
         return 0;
     }
 
-    public Node<T> getAt(int index){
+    public T getAt(int index){
         return null;
     }
 
