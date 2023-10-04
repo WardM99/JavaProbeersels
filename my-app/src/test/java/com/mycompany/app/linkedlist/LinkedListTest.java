@@ -126,11 +126,10 @@ public class LinkedListTest {
         LinkedListInterface<Integer> l = new LinkedList<Integer>();
         for(int i = 5; i <= 8; i++)
             l.add(i);
-        LinkedListInterface<Integer> r = l.reverseLinkedList();
-        assertFalse(r == null);
+        l.reverseLinkedList();
         Integer n = 0;
         for(int i = 8; i >= 5; i--){
-            n = r.getNext();
+            n = l.getNext();
             assertTrue(n == i);
         }
     }
