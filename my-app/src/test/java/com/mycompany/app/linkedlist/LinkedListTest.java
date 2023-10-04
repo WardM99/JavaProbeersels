@@ -134,6 +134,30 @@ public class LinkedListTest {
         }
     }
     @Test
+    public void testSize(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        l.add(8);
+        l.add(9);
+        assertTrue(l.size()==5);
+        l.add(2);
+        assertTrue(l.size()==6);
+    }
+    @Test
+    public void testGetAt(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        l.add(8);
+        l.add(9);
+        assertTrue(l.getAt(0).equals(5));
+        assertTrue(l.getAt(2).equals(7));
+        assertTrue(l.getAt(4).equals(9));
+    }
+    @Test
     public void testSort(){
         LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(45);
