@@ -7,5 +7,7 @@ public interface LinkedListInterface<T> {
     public void sort();
     public T getNext();
     public void reverseLinkedList();
+    public int size();
+    public Node<T> getAt(int index);
     public Node<T> getHead();
 }

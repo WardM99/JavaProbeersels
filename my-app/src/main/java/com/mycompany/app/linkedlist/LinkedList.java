@@ -113,6 +113,14 @@ public class LinkedList<T> implements LinkedListInterface<T> {
         this.head = prev;
     }
 
+    public int size(){
+        return 0;
+    }
+
+    public Node<T> getAt(int index){
+        return null;
+    }
+
     public Node<T> getHead() {
         return head;
     }
