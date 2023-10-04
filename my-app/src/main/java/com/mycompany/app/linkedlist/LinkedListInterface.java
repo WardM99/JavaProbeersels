@@ -6,5 +6,6 @@ public interface LinkedListInterface<T> {
     public void remove(Comparable<T> value);
     public void sort();
     public T getNext();
+    public void reverseLinkedList();
     public Node<T> getHead();
 }

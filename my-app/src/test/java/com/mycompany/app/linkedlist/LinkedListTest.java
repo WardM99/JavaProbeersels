@@ -122,6 +122,18 @@ public class LinkedListTest {
         assertTrue(n.equals(5));
     }
     @Test
+    public void testReverseLinkedList(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        for(int i = 5; i <= 8; i++)
+            l.add(i);
+        l.reverseLinkedList();
+        Integer n = 0;
+        for(int i = 8; i >= 5; i--){
+            n = l.getNext();
+            assertTrue(n == i);
+        }
+    }
+    @Test
     public void testSort(){
         LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(45);
