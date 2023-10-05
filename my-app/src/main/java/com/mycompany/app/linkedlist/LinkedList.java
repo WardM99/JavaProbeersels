@@ -1,12 +1,16 @@
 package com.mycompany.app.linkedlist;
 
+import java.util.NoSuchElementException;
+
 public class LinkedList<T> implements LinkedListInterface<T> {
     private Node<T> head;
     private Node<T> currentNode;
+    private int size;
 
     LinkedList() {
         this.head = null;
         this.currentNode = null;
+        this.size = 0;
     }
 
     public void add(Comparable<T> value) {
@@ -22,6 +26,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             }
             previous.setNextNode(new Node<T>(value));
         }
+        this.size++;
     }
 
     public boolean contains(Comparable<T> value){
@@ -34,7 +39,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
         return current != null && current.getValue().equals(value);
     }
 
-    public void remove(Comparable<T> value) {
+    public void remove(Comparable<T> value) throws NoSuchElementException {
         if(this.head != null){
             Node<T> previous = null;
             Node<T> current = this.head;
@@ -42,14 +47,20 @@ public class LinkedList<T> implements LinkedListInterface<T> {
                 previous = current;
                 current = current.getNextNode();
             }
-            if(this.head == current){
-                this.head = current.getNextNode();
+            if(current != null) {
+                if(this.head == current){
+                    this.head = current.getNextNode();
+                }
+                else{
+                    previous.setNextNode(current.getNextNode());
+                }
+                if(this.currentNode == current) {
+                    this.currentNode = current.getNextNode();
+                }
+                this.size--;
             }
             else{
-                previous.setNextNode(current.getNextNode());
-            }
-            if(this.currentNode == current) {
-                this.currentNode = current.getNextNode();
+                throw new NoSuchElementException();
             }
         }
     }
@@ -111,6 +122,23 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             current = next;
         }
         this.head = prev;
+    }
+
+    public int size(){
+        return this.size;
+    }
+
+    public T getAt(int index) throws IndexOutOfBoundsException{
+        int i = 0;
+        Node<T> current = this.head;
+        while(i < index){
+            current = current.getNextNode();
+            if(current == null){
+                throw new IndexOutOfBoundsException(index);
+            }
+            i++;
+        }
+        return (T) current.getValue();
     }
 
     public Node<T> getHead() {

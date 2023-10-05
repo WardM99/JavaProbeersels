@@ -4,6 +4,8 @@ package com.mycompany.app.linkedlist;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.NoSuchElementException;
+
 import org.junit.Test;
 
 public class LinkedListTest {
@@ -41,6 +43,17 @@ public class LinkedListTest {
         assertFalse(l.contains(6));
         assertTrue(l.contains(5));
         assertTrue(l.contains(7));
+    }
+    @Test(expected = NoSuchElementException.class)
+    public void removeElementThatDontExcist(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        assertTrue(l.size()==3);
+        assertFalse(l.contains(10));
+        l.remove(10);
+        assertTrue(l.size()==3);
     }
     @Test
     public void removeHeadElement(){
@@ -132,6 +145,44 @@ public class LinkedListTest {
             n = l.getNext();
             assertTrue(n == i);
         }
+    }
+    @Test
+    public void testSize(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        l.add(8);
+        l.add(9);
+        assertTrue(l.size()==5);
+        l.add(2);
+        assertTrue(l.size()==6);
+        l.remove(6);
+        assertTrue(l.size()==5);
+        l.remove(5);
+        assertTrue(l.size()==4);
+    }
+    @Test
+    public void testGetAt(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        l.add(8);
+        l.add(9);
+        assertTrue(l.getAt(0).equals(5));
+        assertTrue(l.getAt(2).equals(7));
+        assertTrue(l.getAt(4).equals(9));
+    }
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetAtGiveIndexOutOfBoundException(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        l.add(8);
+        l.add(9);
+        l.getAt(10);
     }
     @Test
     public void testSort(){
