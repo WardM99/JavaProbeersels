@@ -5,6 +5,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
+import java.util.NoSuchElementException;
+
 import org.junit.Test;
 
 public class LinkedListTest {
@@ -42,6 +44,15 @@ public class LinkedListTest {
         assertFalse(l.contains(6));
         assertTrue(l.contains(5));
         assertTrue(l.contains(7));
+    }
+    @Test(expected = NoSuchElementException.class)
+    public void removeElementThatDontExcist(){
+        LinkedListInterface<Integer> l = new LinkedList<Integer>();
+        l.add(5);
+        l.add(6);
+        l.add(7);
+        assertFalse(l.contains(10));
+        l.remove(10);
     }
     @Test
     public void removeHeadElement(){
