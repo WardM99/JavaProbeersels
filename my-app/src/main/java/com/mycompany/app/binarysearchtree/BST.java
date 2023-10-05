@@ -41,8 +41,27 @@ public class BST<T> implements BSTInterface<T>{
 
     @Override
     public boolean contains(Comparable<T> value) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+        boolean stop = false;
+        T valueUnpacked = (T) value;
+        if(this.root == null){
+            return false;
+        } 
+        else {
+            BSTNodeInterface<T> current = this.root;
+            while(current != null && !stop){
+                Comparable<T> currentValue = current.getValue();
+                if(currentValue.compareTo(valueUnpacked) < 0){ //left child
+                    current = current.getLeftChild();
+                }
+                else if(currentValue.compareTo(valueUnpacked) > 0){ //right child
+                    current = current.getRightChild();
+                }
+                else { // same value
+                    stop = true;
+                }
+            }
+        }
+        return stop;
     }
 
     @Override
