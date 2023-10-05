@@ -12,4 +12,16 @@ public class BSTTest {
         BSTInterface<Integer> b = new BST<Integer>();
         b.add(5);
     }
+    @Test 
+    public void testAddMultiple(){
+        BSTInterface<Integer> b = new BST<Integer>();
+        b.add(5);
+        b.add(6);
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddDublicate(){
+        BSTInterface<Integer> b = new BST<Integer>();
+        b.add(5);
+        b.add(5);
+    }
 }
