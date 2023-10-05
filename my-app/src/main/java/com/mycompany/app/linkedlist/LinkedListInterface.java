@@ -8,6 +8,6 @@ public interface LinkedListInterface<T> {
     public T getNext();
     public void reverseLinkedList();
     public int size();
-    public T getAt(int index);
+    public T getAt(int index) throws IndexOutOfBoundsException;
     public Node<T> getHead();
 }
