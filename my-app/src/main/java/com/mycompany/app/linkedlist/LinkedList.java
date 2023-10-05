@@ -1,5 +1,7 @@
 package com.mycompany.app.linkedlist;
 
+import java.util.NoSuchElementException;
+
 public class LinkedList<T> implements LinkedListInterface<T> {
     private Node<T> head;
     private Node<T> currentNode;
@@ -37,7 +39,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
         return current != null && current.getValue().equals(value);
     }
 
-    public void remove(Comparable<T> value) {
+    public void remove(Comparable<T> value) throws NoSuchElementException {
         if(this.head != null){
             Node<T> previous = null;
             Node<T> current = this.head;
@@ -45,7 +47,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
                 previous = current;
                 current = current.getNextNode();
             }
-            if(this.head != null) {
+            if(current != null) {
                 if(this.head == current){
                     this.head = current.getNextNode();
                 }
@@ -56,6 +58,9 @@ public class LinkedList<T> implements LinkedListInterface<T> {
                     this.currentNode = current.getNextNode();
                 }
                 this.size--;
+            }
+            else{
+                throw new NoSuchElementException();
             }
         }
     }

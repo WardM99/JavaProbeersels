@@ -2,7 +2,6 @@ package com.mycompany.app.linkedlist;
 
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 import java.util.NoSuchElementException;
@@ -51,8 +50,10 @@ public class LinkedListTest {
         l.add(5);
         l.add(6);
         l.add(7);
+        assertTrue(l.size()==3);
         assertFalse(l.contains(10));
         l.remove(10);
+        assertTrue(l.size()==3);
     }
     @Test
     public void removeHeadElement(){
