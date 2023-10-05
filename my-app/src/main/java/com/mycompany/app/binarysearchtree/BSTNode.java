@@ -34,7 +34,5 @@ public class BSTNode<T> implements BSTNodeInterface<T> {
     @Override
     public BSTNodeInterface<T> getRightChild() {
         return this.rightNode;
-    }
-    
-    
+    }    
 }
