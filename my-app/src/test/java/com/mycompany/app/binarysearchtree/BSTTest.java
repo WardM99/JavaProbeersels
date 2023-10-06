@@ -3,6 +3,8 @@ package com.mycompany.app.binarysearchtree;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.NoSuchElementException;
+
 import org.junit.Test;
 
 public class BSTTest {
@@ -48,5 +50,29 @@ public class BSTTest {
         b.add(10);
         b.add(6);
         assertFalse(b.contains(9));
+    }
+    @Test
+    public void testRemove(){
+        BSTInterface<Integer> b = new BST<Integer>();
+        b.add(5);
+        b.add(1);
+        b.add(10);
+        b.add(6);
+        assertTrue(b.contains(5));
+        b.remove(5);
+        assertFalse(b.contains(5));
+        assertTrue(b.contains(1));
+        assertTrue(b.contains(10));
+        assertTrue(b.contains(6));
+    }
+    @Test(expected = NoSuchElementException.class)
+    public void testRemoveDontExcist(){
+        BSTInterface<Integer> b = new BST<Integer>();
+        b.add(5);
+        b.add(1);
+        b.add(10);
+        b.add(6);
+        assertFalse(b.contains(50));
+        b.remove(50);
     }
 }
