@@ -1,5 +1,7 @@
 package com.mycompany.app.binarysearchtree;
 
+import java.util.NoSuchElementException;
+
 public class BST<T> implements BSTInterface<T>{
     private BSTNodeInterface<T> root;
 
@@ -8,7 +10,7 @@ public class BST<T> implements BSTInterface<T>{
     }
 
     @Override
-    public void add(Comparable<T> value) {
+    public void add(Comparable<T> value) throws IllegalArgumentException {
         T valueUnpacked = (T) value;
         if(this.root == null){
             this.root = new BSTNode<T>(value);
@@ -65,9 +67,76 @@ public class BST<T> implements BSTInterface<T>{
     }
 
     @Override
-    public void remove(Comparable<T> value) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+    public void remove(Comparable<T> value) throws NoSuchElementException {
+        // find node to remove
+        T valueUnpacked = (T) value;
+        BSTNodeInterface<T> nodeToRemove = this.root, prev = null;
+        boolean stop = false;
+        while(nodeToRemove != null && !stop){
+            Comparable<T> currentValue = nodeToRemove.getValue();
+            if(currentValue.compareTo(valueUnpacked) < 0){ //left child
+                prev = nodeToRemove;
+                nodeToRemove = nodeToRemove.getLeftChild();
+            }
+            else if(currentValue.compareTo(valueUnpacked) > 0){ //right child
+                prev = nodeToRemove;
+                nodeToRemove = nodeToRemove.getRightChild();
+            }
+            else { // same value
+                stop = true;
+            }
+        }
+
+        if(nodeToRemove == null) {
+            throw new NoSuchElementException();
+        }
+
+        // find largest node left or smallest node right
+
+        BSTNodeInterface<T> newNode = null;
+        BSTNodeInterface<T> prevNode = null;
+
+        if(nodeToRemove.getLeftChild() != null){
+            newNode = nodeToRemove.getLeftChild();
+            while(newNode.getRightChild() != null){
+                prevNode = newNode;
+                newNode = newNode.getRightChild();
+            }
+        }
+        else if(nodeToRemove.getRightChild() != null){
+            newNode = nodeToRemove.getRightChild();
+            while(newNode.getLeftChild() != null){
+                prevNode = newNode;
+                newNode = newNode.getLeftChild();
+            }
+        }
+        // node can just be removed
+        if(prev == null){
+            this.root = newNode;
+        }
+        else{
+            Comparable<T> prevValue = prev.getValue();
+            if(prevValue.compareTo(valueUnpacked) < 0){
+                prev.setLeftChild(newNode);
+            }
+            else {
+                prev.setRightChild(newNode);
+            }
+        }
+        // fix childeren
+        if(prevNode != null){
+            if(newNode != null && prevNode.getRightChild().getValue().equals(newNode.getValue())){
+                prevNode.setRightChild(newNode.getLeftChild());
+            }
+            else if(newNode != null && prevNode.getLeftChild().getValue().equals(newNode.getValue())){
+                prevNode.setLeftChild(newNode.getRightChild());
+            }
+        }
+
+        if(newNode != null){
+            newNode.setLeftChild(nodeToRemove.getLeftChild());
+            newNode.setRightChild(nodeToRemove.getRightChild());
+        }
     }
     
 }
