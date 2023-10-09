@@ -1,10 +1,10 @@
 package com.mycompany.app.linkedlist;
 
 public class Node<T> {
-    private Comparable<T> value;
+    private T value;
     private Node<T> nextNode;
 
-    Node(Comparable<T> value) {
+    Node(T value) {
         this.value = value;
         this.nextNode = null;
     }
@@ -13,7 +13,7 @@ public class Node<T> {
         return nextNode;
     }
 
-    public Comparable<T> getValue() {
+    public T getValue() {
         return value;
     }
 
