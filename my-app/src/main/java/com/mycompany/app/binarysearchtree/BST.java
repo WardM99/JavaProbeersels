@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 public class BST<T> implements BSTInterface<T>{
     private BSTNodeInterface<T> root;
 
-    BST(){
+    public BST(){
         this.root = null;
     }
 

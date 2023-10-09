@@ -7,7 +7,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
     private Node<T> currentNode;
     private int size;
 
-    LinkedList() {
+    public LinkedList() {
         this.head = null;
         this.currentNode = null;
         this.size = 0;

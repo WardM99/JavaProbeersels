@@ -4,9 +4,13 @@ public class Node<T> {
     private T value;
     private Node<T> nextNode;
 
-    Node(T value) {
+    public Node(T value) {
         this.value = value;
         this.nextNode = null;
+    }
+
+    public void setValue(T value){
+        this.value = value;
     }
 
     public Node<T> getNextNode() {
