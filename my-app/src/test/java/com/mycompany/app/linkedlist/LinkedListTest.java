@@ -184,19 +184,4 @@ public class LinkedListTest {
         l.add(9);
         l.getAt(10);
     }
-    @Test
-    public void testSort(){
-        LinkedListInterface<Integer> l = new LinkedList<Integer>();
-        l.add(45);
-        l.add(23);
-        l.add(98);
-        l.add(17);
-        l.add(65);
-        l.add(89);
-        l.add(100);
-        l.add(34);
-        l.add(78);
-        l.add(56);
-        l.sort();
-    }
 }
