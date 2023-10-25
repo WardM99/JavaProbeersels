@@ -47,4 +47,26 @@ public class Bucket<K, V> {
             this.overflowBucket.remove(key);
         }
     }
+
+    public V get(K key) throws NoSuchElementException {
+        boolean found = false;
+        int i = 0;
+        BucketItem<K,V> item = null;
+        while(!found && i < this.size){
+            item = this.items.getAt(i);
+            if(item.getKey() == key){
+                found = true;
+            }
+            else{
+                i++;
+            }
+        }
+        if(!found){
+            if(this.overflowBucket == null)
+                throw new NoSuchElementException();
+            else
+                return this.overflowBucket.get(key);
+        }
+        return item.getValue();
+    }
 }
