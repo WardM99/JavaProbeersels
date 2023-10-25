@@ -33,6 +33,6 @@ public class BucketItem<K,V> {
         
         BucketItem<K,V> c = (BucketItem<K,V>) o;
 
-        return this.key.equals(c.getKey()) && this.value.equals(c.getValue());
+        return this.key.equals(c.getKey());
     }
 }
