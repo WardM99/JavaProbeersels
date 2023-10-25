@@ -114,5 +114,18 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
         return this.head;
     }
 
+    public boolean isFull() {
+        boolean isFull = true;
+        int i = 0;
+        Node<T> current = this.head; 
+
+        while(isFull && i < this.size){
+            if(current.getValue() == null)
+                isFull = false;
+            current = current.getNextNode();
+            i++;
+        }
+        return isFull;
+    }
     
 }

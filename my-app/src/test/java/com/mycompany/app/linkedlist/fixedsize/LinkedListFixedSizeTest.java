@@ -195,4 +195,22 @@ public class LinkedListFixedSizeTest {
         l.add(120);
         assertFalse(l.contains(120));
     }
+
+    @Test
+    public void testIsFull(){
+        LinkedListFixedSize<Integer> l = new LinkedListFixedSize<>(10);
+        for(int i = 0; i < 10; i++){
+            l.add(i);
+        }
+        assertTrue(l.isFull());
+    }
+    @Test
+    public void testIsNotFull(){
+        LinkedListFixedSize<Integer> l = new LinkedListFixedSize<>(10);
+        for(int i = 0; i < 10; i++){
+            l.add(i);
+        }
+        l.remove(6);
+        assertFalse(l.isFull());
+    }
 }
