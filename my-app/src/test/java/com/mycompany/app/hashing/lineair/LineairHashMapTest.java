@@ -33,7 +33,8 @@ public class LineairHashMapTest {
 
     @Test
     public void testPutAndGetWithOverflow(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         List<String> numbersWrittenOut = new ArrayList<>(Arrays.asList(
             "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven",
             "Eight", "Nine",
@@ -62,7 +63,8 @@ public class LineairHashMapTest {
 
     @Test
     public void testGetOrDefault(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -82,7 +84,8 @@ public class LineairHashMapTest {
 
     @Test(expected = NoSuchElementException.class)
     public void testRemoveKey(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -98,7 +101,8 @@ public class LineairHashMapTest {
 
     @Test(expected = NoSuchElementException.class)
     public void testRemoveKeyAndValue(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -114,7 +118,8 @@ public class LineairHashMapTest {
 
     @Test(expected = NoSuchElementException.class)
     public void testRemoveKeyDontExcist(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -125,7 +130,8 @@ public class LineairHashMapTest {
     
     @Test(expected = NoSuchElementException.class)
     public void testRemoveKeyDontExcistWithValue(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -136,7 +142,8 @@ public class LineairHashMapTest {
 
     @Test()
     public void testContainsKey(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
