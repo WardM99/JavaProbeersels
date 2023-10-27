@@ -1,0 +1,9 @@
+package com.mycompany.app.queue;
+
+public interface QueueInterface<T> {
+    public void enqueue(T value);
+
+    public T dequeue();
+
+    public T peek();
+}
