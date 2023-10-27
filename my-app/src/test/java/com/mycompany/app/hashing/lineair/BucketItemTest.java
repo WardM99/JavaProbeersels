@@ -7,11 +7,6 @@ import org.junit.Test;
 
 public class BucketItemTest {
     @Test
-    public void makeBucketItem(){
-        new BucketItem<String,Integer>("TEST", 5);
-    }
-
-    @Test
     public void equalsBucketItems(){
         BucketItem<String, Integer> bi1 =
             new BucketItem<String,Integer>("TEST", 5);
