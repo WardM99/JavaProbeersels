@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.junit.Test;
 
@@ -81,5 +82,59 @@ public class LineairHashMapTest {
         assertEquals(10,value);
         value = h.getOrDefault("Hey, How are you?", 6);
         assertEquals(6,value);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testRemoveKey(){
+        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        h.put("Zero", 0);
+        h.put("One", 1);
+        h.put("one", 1);
+        h.put("Hey! How are you?", 10);
+
+        int value = h.get("Zero");
+        assertEquals(0,value);
+
+        h.remove("Zero");
+
+        h.get("Zero");
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testRemoveKeyAndValue(){
+        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        h.put("Zero", 0);
+        h.put("One", 1);
+        h.put("one", 1);
+        h.put("Hey! How are you?", 10);
+
+        int value = h.get("Zero");
+        assertEquals(0,value);
+
+        h.remove("Zero",0);
+
+        h.get("Zero");
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testRemoveKeyDontExcist(){
+        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        h.put("Zero", 0);
+        h.put("One", 1);
+        h.put("one", 1);
+        h.put("Hey! How are you?", 10);
+
+        h.remove("zero");
+    } 
+    
+    @Test(expected = NoSuchElementException.class)
+    public void testRemoveKeyDontExcistWithValue(){
+        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        h.put("Zero", 0);
+        h.put("One", 1);
+        h.put("one", 1);
+        h.put("Hey! How are you?", 10);
+
+        h.remove("Zero", 3);
     }
 }

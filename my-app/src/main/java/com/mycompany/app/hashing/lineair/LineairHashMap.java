@@ -119,14 +119,28 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     @Override
     public void remove(K key) throws NoSuchElementException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+        int hash = key.hashCode();
+        int mask = getMask();
+        int indexValue = hash&mask;
+        if(indexValue >= this.n){
+            mask = mask >>1;
+            indexValue = hash&(mask);
+        }
+        Bucket<K,V> removeBucket = this.buckets.get(indexValue);
+        removeBucket.remove(key);
     }
 
     @Override
-    public void remove(K Key, V value) throws NoSuchElementException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+    public void remove(K key, V value) throws NoSuchElementException {
+        int hash = key.hashCode();
+        int mask = getMask();
+        int indexValue = hash&mask;
+        if(indexValue >= this.n){
+            mask = mask >>1;
+            indexValue = hash&(mask);
+        }
+        Bucket<K,V> removeBucket = this.buckets.get(indexValue);
+        removeBucket.remove(key, value);
     }
 
     @Override

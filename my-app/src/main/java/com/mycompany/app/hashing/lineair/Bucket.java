@@ -50,6 +50,13 @@ public class Bucket<K, V> {
         }
     }
 
+    public void remove(K key, V value) throws NoSuchElementException {
+        V itemValue = get(key);
+        if(!itemValue.equals(value))
+            throw new NoSuchElementException();
+        remove(key);
+    }
+
     public V get(K key) throws NoSuchElementException {
         boolean found = false;
         int i = 0;

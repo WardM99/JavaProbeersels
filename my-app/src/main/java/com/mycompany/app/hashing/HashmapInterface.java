@@ -7,6 +7,6 @@ public interface HashmapInterface<K, V> {
     public V get(K key) throws NoSuchElementException;
     public V getOrDefault(K key, V defaultValue);
     public void remove(K key) throws NoSuchElementException;
-    public void remove(K Key, V value) throws NoSuchElementException;
+    public void remove(K key, V value) throws NoSuchElementException;
     public boolean containsKey(K key);
 }
