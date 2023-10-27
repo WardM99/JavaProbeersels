@@ -16,6 +16,7 @@ public class StackTest {
     public void setUp() {
         s = new Stack<>();
     }
+    
     @Test
     public void basicTests(){
         s.push(5);
