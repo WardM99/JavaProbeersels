@@ -1,19 +1,23 @@
 package com.mycompany.app.linkedlist;
 
 public class Node<T> {
-    private Comparable<T> value;
+    private T value;
     private Node<T> nextNode;
 
-    Node(Comparable<T> value) {
+    public Node(T value) {
         this.value = value;
         this.nextNode = null;
+    }
+
+    public void setValue(T value){
+        this.value = value;
     }
 
     public Node<T> getNextNode() {
         return nextNode;
     }
 
-    public Comparable<T> getValue() {
+    public T getValue() {
         return value;
     }
 

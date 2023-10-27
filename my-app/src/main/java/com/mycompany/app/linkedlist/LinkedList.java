@@ -7,13 +7,13 @@ public class LinkedList<T> implements LinkedListInterface<T> {
     private Node<T> currentNode;
     private int size;
 
-    LinkedList() {
+    public LinkedList() {
         this.head = null;
         this.currentNode = null;
         this.size = 0;
     }
 
-    public void add(Comparable<T> value) {
+    public void add(T value) {
         if(this.head == null){
             this.head = new Node<T>(value);
         }
@@ -29,7 +29,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
         this.size++;
     }
 
-    public boolean contains(Comparable<T> value){
+    public boolean contains(T value){
         if(this.head == null)
             return false;
         Node<T> current = this.head;
@@ -39,7 +39,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
         return current != null && current.getValue().equals(value);
     }
 
-    public void remove(Comparable<T> value) throws NoSuchElementException {
+    public void remove(T value) throws NoSuchElementException {
         if(this.head != null){
             Node<T> previous = null;
             Node<T> current = this.head;
@@ -64,7 +64,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             }
         }
     }
-
+    /*
     public void sort() {
         if(this.head != null){
             Node<T> pivot = this.head;
@@ -73,7 +73,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             LinkedList<T> left = new LinkedList<T>();
             LinkedList<T> right = new LinkedList<T>();
             while(current != null){
-                Comparable<T> currentValue = current.getValue();
+                T currentValue = current.getValue();
                 //System.out.println(currentValue);
                 if(currentValue.compareTo(pivotValue) < 0)
                     left.add(current.getValue());
@@ -99,7 +99,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             pivot.setNextNode(right.getHead());
         }
     }
-
+    */
     public T getNext() {
         if(this.head == null)
             return null;
