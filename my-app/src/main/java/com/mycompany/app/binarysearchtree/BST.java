@@ -59,7 +59,7 @@ public class BST<T> implements BSTInterface<T>{
                     current = current.getLeftChild();
                 }
                 else if(currentValue.compareTo(valueUnpacked) > 0){
-                     //right child
+                    //right child
                     current = current.getRightChild();
                 }
                 else { // same value
