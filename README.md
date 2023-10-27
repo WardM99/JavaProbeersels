@@ -4,10 +4,10 @@
 
 Java implementation of most important data structures
 
-* Binary Search Tree
-* Hashing
-  * Linear HashMap
-* List
-  * LinkedList
-  * LinkedList with a fixed size
-* Stack
+  * Binary Search Tree
+  * Hashing
+    * Linear HashMap
+  * List
+    * LinkedList
+    * LinkedList with a fixed size
+  * Stack
