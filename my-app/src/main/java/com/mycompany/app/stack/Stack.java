@@ -18,11 +18,12 @@ public class Stack<T> implements StackInterface<T> {
         newNode.setNextNode(this.head);
         this.head = newNode;
     }
+    
     @Override
     public T pop() throws EmptyStackException {
         if(this.head == null)
             throw new EmptyStackException();
-        
+
         T value = this.head.getValue();
         this.head = this.head.getNextNode();
         return value;

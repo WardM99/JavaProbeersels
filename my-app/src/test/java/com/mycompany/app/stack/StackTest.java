@@ -39,10 +39,12 @@ public class StackTest {
 
         assertNull(valuePeek);
     }
+
     @Test(expected = EmptyStackException.class)
     public void popEmptyStackTest(){
         s.pop();
     }
+    
     @Test
     public void testPushAndPopMixed() {
         s.push(100);
