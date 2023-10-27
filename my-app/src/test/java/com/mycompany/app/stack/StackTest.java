@@ -18,13 +18,13 @@ public class StackTest {
         int valuePeek = s.peek();
         int valuePop = s.pop();
 
-        assertEquals(5, valuePeek);
-        assertEquals(5, valuePop);
+        assertEquals(6, valuePeek);
+        assertEquals(6, valuePop);
 
         assertTrue(valuePeek == valuePop);
 
         valuePeek = s.peek();
-        assertEquals(6, valuePeek);
+        assertEquals(5, valuePeek);
     }
 
     @Test
@@ -37,6 +37,6 @@ public class StackTest {
     @Test(expected = EmptyStackException.class)
     public void popEmptyStackTest(){
         StackInterface<Integer> s = new Stack<Integer>();
-        s.peek();
+        s.pop();
     }
 }
