@@ -16,13 +16,15 @@ public class Bucket<K, V> {
     }
 
     public void add(K key, V value){
-        Bucket<K,V> toAdd = this;
         BucketItem<K,V> newItem = new BucketItem<K,V>(key, value);
         if(this.items.isFull()){
-            this.overflowBucket = new Bucket<>(this.size);
-            toAdd = this.overflowBucket;
+            if(this.overflowBucket == null)
+                this.overflowBucket = new Bucket<>(this.size);
+            this.overflowBucket.add(key, value);
         }
-        toAdd.items.add(newItem);
+        else{
+            this.items.add(newItem);
+        }
     }
 
     public boolean contains(K key) {
@@ -54,7 +56,7 @@ public class Bucket<K, V> {
         BucketItem<K,V> item = null;
         while(!found && i < this.size){
             item = this.items.getAt(i);
-            if(item.getKey() == key){
+            if(item != null && item.getKey() == key){
                 found = true;
             }
             else{
@@ -68,5 +70,11 @@ public class Bucket<K, V> {
                 return this.overflowBucket.get(key);
         }
         return item.getValue();
+    }
+    public Bucket<K, V> getOverflowBucket() {
+        return overflowBucket;
+    }
+    public LinkedListFixedSize<BucketItem<K, V>> getItems() {
+        return items;
     }
 }
