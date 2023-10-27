@@ -1,16 +1,16 @@
 package com.mycompany.app.hashing.lineair;
 
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import com.mycompany.app.hashing.HashmapInterface;
 import com.mycompany.app.linkedlist.fixedsize.LinkedListFixedSize;
+import com.mycompany.app.linkedlist.LinkedList;
 
 public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     private final double UPPERLOADFACTOR = 0.9;
     private final int BUCKETSIZE = 2;
-    private ArrayList<Bucket<K,V>> buckets;
+    private LinkedList<Bucket<K,V>> buckets;
     private int n = 2;
     private int b = 1;
     private int a = 0;
@@ -18,7 +18,7 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
     private int nextIndexRefactor = 0;
 
     public LineairHashMap(){
-        this.buckets = new ArrayList<Bucket<K,V>>();
+        this.buckets = new LinkedList<Bucket<K,V>>();
         for(int i = 0; i < this.n; i++){
             this.buckets.add(new Bucket<K,V>(BUCKETSIZE));
         }
@@ -26,6 +26,16 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     @Override
     public void put(K key, V value) {
+        
+        Bucket<K,V> inserBucket = getBucket(key);
+        inserBucket.add(key, value);
+        this.a++;
+        double loadfactor = (this.a)/(1.0*this.n*this.BUCKETSIZE);
+        if(loadfactor >= UPPERLOADFACTOR)
+            reorgenize();
+    }
+
+    private Bucket<K,V> getBucket(K key){
         int hash = key.hashCode();
         int mask = getMask();
         int indexValue = hash&mask;
@@ -33,12 +43,7 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
             mask = mask >>1;
             indexValue = hash&(mask);
         }
-        Bucket<K,V> inserBucket = this.buckets.get(indexValue);
-        inserBucket.add(key, value);
-        this.a++;
-        double loadfactor = (this.a)/(1.0*this.n*this.BUCKETSIZE);
-        if(loadfactor >= UPPERLOADFACTOR)
-            reorgenize();
+        return this.buckets.getAt(indexValue);
     }
 
     private int getMask(){
@@ -51,7 +56,6 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     private void reorgenize(){
         // add new bucket
-        
         Bucket<K,V> newBucket = new Bucket<K,V>(BUCKETSIZE);
         this.buckets.add(newBucket);
         this.n = this.buckets.size();
@@ -62,7 +66,7 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
         }
         int wrongIndex = this.nextIndexRefactor;
 
-        Bucket<K,V> b = this.buckets.get(wrongIndex);
+        Bucket<K,V> b = this.buckets.getAt(wrongIndex);
         while(b != null){
             LinkedListFixedSize<BucketItem<K,V>> items = b.getItems();
             for (int index = 0; index < BUCKETSIZE; index++) {
@@ -88,28 +92,14 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     @Override
     public V get(K key) throws NoSuchElementException {
-        int hash = key.hashCode();
-        int mask = getMask();
-        int indexValue = hash&mask;
-        if(indexValue >= this.n){
-            mask = mask >>1;
-            indexValue = hash&(mask);
-        }
-        Bucket<K,V> searchBucket = this.buckets.get(indexValue);
+        Bucket<K,V> searchBucket = getBucket(key);
         return searchBucket.get(key);
     }
 
     @Override
     public V getOrDefault(K key, V defaultValue) {
         try{
-            int hash = key.hashCode();
-            int mask = getMask();
-            int indexValue = hash&mask;
-            if(indexValue >= this.n){
-                mask = mask >>1;
-                indexValue = hash&(mask);
-            }
-            Bucket<K,V> searchBucket = this.buckets.get(indexValue);
+            Bucket<K,V> searchBucket = getBucket(key);
             return searchBucket.get(key);
         }
         catch(NoSuchElementException e){
@@ -119,27 +109,13 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     @Override
     public void remove(K key) throws NoSuchElementException {
-        int hash = key.hashCode();
-        int mask = getMask();
-        int indexValue = hash&mask;
-        if(indexValue >= this.n){
-            mask = mask >>1;
-            indexValue = hash&(mask);
-        }
-        Bucket<K,V> removeBucket = this.buckets.get(indexValue);
+        Bucket<K,V> removeBucket = getBucket(key);
         removeBucket.remove(key);
     }
 
     @Override
     public void remove(K key, V value) throws NoSuchElementException {
-        int hash = key.hashCode();
-        int mask = getMask();
-        int indexValue = hash&mask;
-        if(indexValue >= this.n){
-            mask = mask >>1;
-            indexValue = hash&(mask);
-        }
-        Bucket<K,V> removeBucket = this.buckets.get(indexValue);
+        Bucket<K,V> removeBucket = getBucket(key);
         removeBucket.remove(key, value);
     }
 
