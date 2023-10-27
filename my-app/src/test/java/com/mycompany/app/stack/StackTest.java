@@ -6,12 +6,18 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.EmptyStackException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class StackTest {
+    private Stack<Integer> s;
+
+    @Before
+    public void setUp() {
+        s = new Stack<>();
+    }
     @Test
     public void basicTests(){
-        StackInterface<Integer> s = new Stack<Integer>();
         s.push(5);
         s.push(6);
 
@@ -29,14 +35,21 @@ public class StackTest {
 
     @Test
     public void peekEmptyStackTest(){
-        StackInterface<Integer> s = new Stack<Integer>();
         Integer valuePeek = s.peek();
 
         assertNull(valuePeek);
     }
     @Test(expected = EmptyStackException.class)
     public void popEmptyStackTest(){
-        StackInterface<Integer> s = new Stack<Integer>();
         s.pop();
+    }
+    @Test
+    public void testPushAndPopMixed() {
+        s.push(100);
+        s.push(200);
+        assertEquals(200, s.pop().intValue());
+        s.push(300);
+        assertEquals(300, s.pop().intValue());
+        assertEquals(100, s.pop().intValue());
     }
 }
