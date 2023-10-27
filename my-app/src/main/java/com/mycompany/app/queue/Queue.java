@@ -7,6 +7,7 @@ import com.mycompany.app.linkedlist.Node;
 public class Queue<T> implements QueueInterface<T> {
 
     Node<T> head;
+    
     Node<T> tail;
 
     public Queue(){
