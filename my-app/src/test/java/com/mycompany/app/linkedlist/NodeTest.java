@@ -5,15 +5,12 @@ import org.junit.Test;
 
 public class NodeTest {
     @Test
-    public void makeLinkedListNode(){
-        new Node<Integer>(5);
-    }
-    @Test
     public void getCorrectValue(){
         Node<Integer> n = new Node<Integer>(5);
         assertTrue(n.getValue().equals(5));
         assertTrue(!n.getValue().equals(6));
     }
+    
     @Test
     public void setNextNode(){
         Node<Integer> n1 = new Node<Integer>(5);

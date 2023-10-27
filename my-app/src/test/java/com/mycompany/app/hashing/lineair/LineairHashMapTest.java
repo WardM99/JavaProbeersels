@@ -13,20 +13,6 @@ import org.junit.Test;
 
 public class LineairHashMapTest {
     @Test
-    public void testNew(){
-        new LineairHashMap<String, Integer>();
-    }
-
-    @Test
-    public void testPut(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
-        h.put("Zero", 0);
-        h.put("One", 1);
-        h.put("one", 1);
-        h.put("Hey! How are you?", 10);
-    }
-
-    @Test
     public void testGet(){
         LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
         h.put("Zero", 0);

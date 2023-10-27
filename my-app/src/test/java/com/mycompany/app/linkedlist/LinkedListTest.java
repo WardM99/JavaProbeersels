@@ -9,10 +9,6 @@ import java.util.NoSuchElementException;
 import org.junit.Test;
 
 public class LinkedListTest {
-    @Test
-    public void makeLinkedList() {
-        new LinkedList<Integer>();
-    }
     @Test 
     public void emptyContainsNothing() {
         LinkedList<Integer> l = new LinkedList<Integer>();

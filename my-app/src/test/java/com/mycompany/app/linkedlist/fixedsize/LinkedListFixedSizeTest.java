@@ -10,10 +10,6 @@ import org.junit.Test;
 import com.mycompany.app.linkedlist.LinkedListInterface;
 
 public class LinkedListFixedSizeTest {
-    @Test
-    public void makeLinkedList() {
-        new LinkedListFixedSize<Integer>(10);
-    }
     @Test 
     public void emptyContainsNothing() {
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
