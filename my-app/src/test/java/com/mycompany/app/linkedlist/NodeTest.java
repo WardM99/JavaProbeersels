@@ -1,4 +1,5 @@
 package com.mycompany.app.linkedlist;
+
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
