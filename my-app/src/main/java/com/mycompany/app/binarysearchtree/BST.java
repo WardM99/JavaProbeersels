@@ -66,7 +66,8 @@ public class BST<T> implements BSTInterface<T>{
         return stop;
     }
 
-    private BSTNodeInterface<T> findNodeToRemove(T valueUnpacked, boolean returnPrev){
+    private BSTNodeInterface<T> findNodeToRemove(T valueUnpacked,
+                                                 boolean returnPrev){
         BSTNodeInterface<T> nodeToRemove = this.root;
         BSTNodeInterface<T> prev = null;
         boolean stop = false;
@@ -96,8 +97,9 @@ public class BST<T> implements BSTInterface<T>{
     public void remove(Comparable<T> value) throws NoSuchElementException {
         // find node to remove
         T valueUnpacked = (T) value;
-        BSTNodeInterface<T> nodeToRemove = findNodeToRemove(valueUnpacked, false);
-        BSTNodeInterface<T> prev = findNodeToRemove(valueUnpacked, true);
+        BSTNodeInterface<T> nodeToRemove = findNodeToRemove(valueUnpacked,
+                                                            false);
+        BSTNodeInterface<T> prev = findNodeToRemove(valueUnpacked,true);
 
 
         // find largest node left or smallest node right
