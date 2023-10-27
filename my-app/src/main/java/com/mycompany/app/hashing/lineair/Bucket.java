@@ -16,13 +16,15 @@ public class Bucket<K, V> {
     }
 
     public void add(K key, V value){
-        Bucket<K,V> toAdd = this;
         BucketItem<K,V> newItem = new BucketItem<K,V>(key, value);
         if(this.items.isFull()){
-            this.overflowBucket = new Bucket<>(this.size);
-            toAdd = this.overflowBucket;
+            if(this.overflowBucket == null)
+                this.overflowBucket = new Bucket<>(this.size);
+            this.overflowBucket.add(key, value);
         }
-        toAdd.items.add(newItem);
+        else{
+            this.items.add(newItem);
+        }
     }
 
     public boolean contains(K key) {
@@ -46,5 +48,33 @@ public class Bucket<K, V> {
                 throw new NoSuchElementException();
             this.overflowBucket.remove(key);
         }
+    }
+
+    public V get(K key) throws NoSuchElementException {
+        boolean found = false;
+        int i = 0;
+        BucketItem<K,V> item = null;
+        while(!found && i < this.size){
+            item = this.items.getAt(i);
+            if(item != null && item.getKey() == key){
+                found = true;
+            }
+            else{
+                i++;
+            }
+        }
+        if(!found){
+            if(this.overflowBucket == null)
+                throw new NoSuchElementException();
+            else
+                return this.overflowBucket.get(key);
+        }
+        return item.getValue();
+    }
+    public Bucket<K, V> getOverflowBucket() {
+        return overflowBucket;
+    }
+    public LinkedListFixedSize<BucketItem<K, V>> getItems() {
+        return items;
     }
 }
