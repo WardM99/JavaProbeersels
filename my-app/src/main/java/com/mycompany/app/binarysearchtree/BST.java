@@ -21,10 +21,12 @@ public class BST<T> implements BSTInterface<T>{
             while(current != null){
                 prev = current;
                 Comparable<T> currentValue = current.getValue();
-                if(currentValue.compareTo(valueUnpacked) < 0){ //left child
+                if(currentValue.compareTo(valueUnpacked) < 0){
+                    //left child
                     current = current.getLeftChild();
                 }
-                else if(currentValue.compareTo(valueUnpacked) > 0){ //right child
+                else if(currentValue.compareTo(valueUnpacked) > 0){
+                    //right child
                     current = current.getRightChild();
                 }
                 else { // same value
@@ -145,7 +147,9 @@ public class BST<T> implements BSTInterface<T>{
             if(newNode != null && prevNode.getRightChild().getValue().equals(newNode.getValue())){
                 prevNode.setRightChild(newNode.getLeftChild());
             }
-            else if(newNode != null && prevNode.getLeftChild().getValue().equals(newNode.getValue())){
+            else if(newNode != null && prevNode.getLeftChild()
+                                               .getValue()
+                                               .equals(newNode.getValue())){
                 prevNode.setLeftChild(newNode.getRightChild());
             }
         }

@@ -35,7 +35,12 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     @Override
     public boolean contains(T value) {
         Node<T> current = this.head;
-        while(current != null && (current.getValue() == null || !current.getValue().equals(value))){
+        while(current != null && 
+              (
+                current.getValue() == null || 
+                !current.getValue().equals(value)
+              )
+            ){
             current = current.getNextNode();
         }
         return (current != null);
@@ -44,7 +49,12 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     @Override
     public void remove(T value) throws NoSuchElementException {
         Node<T> current = this.head;
-        while(current != null && (current.getValue() == null || !current.getValue().equals(value))){
+        while(current != null && 
+              (
+                current.getValue() == null || 
+                !current.getValue().equals(value)
+              )
+            ){
             current = current.getNextNode();
         }
         if(current == null)
