@@ -8,27 +8,13 @@ import java.util.NoSuchElementException;
 import org.junit.Test;
 
 public class BSTTest {
-    @Test
-    public void makeBST(){
-        new BST<Integer>();
-    }
-    @Test 
-    public void testAdd(){
-        BSTInterface<Integer> b = new BST<Integer>();
-        b.add(5);
-    }
-    @Test 
-    public void testAddMultiple(){
-        BSTInterface<Integer> b = new BST<Integer>();
-        b.add(5);
-        b.add(6);
-    }
     @Test(expected = IllegalArgumentException.class)
     public void testAddDublicate(){
         BSTInterface<Integer> b = new BST<Integer>();
         b.add(5);
         b.add(5);
     }
+
     @Test
     public void testContains(){
         BSTInterface<Integer> b = new BST<Integer>();
@@ -42,6 +28,7 @@ public class BSTTest {
         b.add(6);
         assertTrue(b.contains(6));
     }
+
     @Test
     public void testDontContains(){
         BSTInterface<Integer> b = new BST<Integer>();
@@ -51,6 +38,7 @@ public class BSTTest {
         b.add(6);
         assertFalse(b.contains(9));
     }
+
     @Test
     public void testRemove(){
         BSTInterface<Integer> b = new BST<Integer>();
@@ -71,6 +59,7 @@ public class BSTTest {
         assertTrue(b.contains(7));
         assertTrue(b.contains(8));
     }
+
     @Test
     public void testRemoveExtraChild(){
         BSTInterface<Integer> b = new BST<Integer>();
@@ -92,7 +81,10 @@ public class BSTTest {
         assertTrue(b.contains(70));
         assertTrue(b.contains(80));
         assertTrue(b.contains(65));
-    }public void testRemoveExtraChildOtherSide(){
+    }
+    
+    @Test
+    public void testRemoveExtraChildOtherSide(){
         BSTInterface<Integer> b = new BST<Integer>();
         b.add(50);
         b.add(30);
@@ -113,6 +105,7 @@ public class BSTTest {
         assertTrue(b.contains(80));
         assertTrue(b.contains(35));
     }
+
     @Test(expected = NoSuchElementException.class)
     public void testRemoveDontExcist(){
         BSTInterface<Integer> b = new BST<Integer>();

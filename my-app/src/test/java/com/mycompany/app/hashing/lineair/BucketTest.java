@@ -8,17 +8,6 @@ import org.junit.Test;
 
 public class BucketTest {
     @Test
-    public void makeBucket(){
-        new Bucket<String, Integer>(2);
-    }
-    @Test
-    public void addItems(){
-        Bucket<String, Integer> b = new Bucket<String, Integer>(2);
-        b.add("Test", 5);
-        b.add("Lest", 6);
-    }
-
-    @Test
     public void containsItems(){
         Bucket<String, Integer> b = new Bucket<String, Integer>(2);
         b.add("Test", 5);

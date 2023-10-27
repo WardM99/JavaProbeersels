@@ -10,15 +10,12 @@ import org.junit.Test;
 import com.mycompany.app.linkedlist.LinkedListInterface;
 
 public class LinkedListFixedSizeTest {
-    @Test
-    public void makeLinkedList() {
-        new LinkedListFixedSize<Integer>(10);
-    }
     @Test 
     public void emptyContainsNothing() {
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
         assertFalse(l.contains(5));
     }
+
     @Test
     public void addOneElement() {
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -26,6 +23,7 @@ public class LinkedListFixedSizeTest {
         assertTrue(l.contains(5));
         assertFalse(l.contains(6));
     }
+    
     @Test
     public void addTwoElements() {
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -34,6 +32,7 @@ public class LinkedListFixedSizeTest {
         assertTrue(l.contains(5));
         assertTrue(l.contains(6));
     }
+
     @Test
     public void removeElement(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -45,6 +44,7 @@ public class LinkedListFixedSizeTest {
         assertTrue(l.contains(5));
         assertTrue(l.contains(7));
     }
+
     @Test(expected = NoSuchElementException.class)
     public void removeElementThatDontExcist(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -54,6 +54,7 @@ public class LinkedListFixedSizeTest {
         assertFalse(l.contains(10));
         l.remove(10);
     }
+
     @Test
     public void removeHeadElement(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -63,12 +64,14 @@ public class LinkedListFixedSizeTest {
         assertFalse(l.contains(5));
         assertTrue(l.contains(6));
     }
+
     @Test
     public void testGetNextNothing(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
         Integer n = l.getNext();
         assertTrue(n==null);
     }
+
     @Test
     public void testGetNext(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -76,6 +79,7 @@ public class LinkedListFixedSizeTest {
         Integer n = l.getNext();
         assertTrue(n.equals(5));
     }
+
     @Test
     public void testGetNextMultiple(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -88,6 +92,7 @@ public class LinkedListFixedSizeTest {
         n = l.getNext();
         assertTrue(n.equals(5));
     }
+
     @Test
     public void testGetNextMultipleWithRemove(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -103,6 +108,7 @@ public class LinkedListFixedSizeTest {
         assertFalse(n.equals(6));
         assertTrue(n.equals(7));
     }
+
     @Test
     public void testGetNextRemoveHead(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -117,6 +123,7 @@ public class LinkedListFixedSizeTest {
         n = l.getNext();
         assertTrue(n.equals(6));
     }
+
     @Test
     public void testGetNextRemoveLast(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -133,6 +140,7 @@ public class LinkedListFixedSizeTest {
         assertFalse(n.equals(9));
         assertTrue(n.equals(5));
     }
+
     @Test
     public void testReverseLinkedList(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(4);
@@ -145,6 +153,7 @@ public class LinkedListFixedSizeTest {
             assertTrue(n == i);
         }
     }
+
     @Test
     public void testSize(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -161,6 +170,7 @@ public class LinkedListFixedSizeTest {
         l.remove(5);
         assertTrue(l.size()==10);
     }
+
     @Test
     public void testGetAt(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -173,6 +183,7 @@ public class LinkedListFixedSizeTest {
         assertTrue(l.getAt(2).equals(7));
         assertTrue(l.getAt(4).equals(9));
     }
+
     @Test(expected = IndexOutOfBoundsException.class)
     public void testGetAtGiveIndexOutOfBoundException(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
@@ -183,6 +194,7 @@ public class LinkedListFixedSizeTest {
         l.add(9);
         l.getAt(10);
     }
+
     @Test
     public void testMoreThen10(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<>(10);
@@ -204,6 +216,7 @@ public class LinkedListFixedSizeTest {
         }
         assertTrue(l.isFull());
     }
+    
     @Test
     public void testIsNotFull(){
         LinkedListFixedSize<Integer> l = new LinkedListFixedSize<>(10);

@@ -6,14 +6,11 @@ import org.junit.Test;
 
 public class BSTNodeTest {
     @Test
-    public void makeBSTNode(){
-        new BSTNode<Integer>(5);
-    }
-    @Test
     public void getCorrectValue(){
         BSTNodeInterface<Integer> n = new BSTNode<Integer>(5);
         assertTrue(n.getValue().equals(5));
     }
+    
     @Test
     public void getAndSetChilderen(){
         BSTNodeInterface<Integer> n = new BSTNode<Integer>(5);

@@ -2,6 +2,7 @@ package com.mycompany.app.linkedlist;
 
 public class Node<T> {
     private T value;
+    
     private Node<T> nextNode;
 
     public Node(T value) {

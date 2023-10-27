@@ -13,22 +13,9 @@ import org.junit.Test;
 
 public class LineairHashMapTest {
     @Test
-    public void testNew(){
-        new LineairHashMap<String, Integer>();
-    }
-
-    @Test
-    public void testPut(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
-        h.put("Zero", 0);
-        h.put("One", 1);
-        h.put("one", 1);
-        h.put("Hey! How are you?", 10);
-    }
-
-    @Test
     public void testGet(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -46,14 +33,22 @@ public class LineairHashMapTest {
 
     @Test
     public void testPutAndGetWithOverflow(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         List<String> numbersWrittenOut = new ArrayList<>(Arrays.asList(
-            "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
-            "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen",
-            "Twenty", "Twenty-One", "Twenty-Two", "Twenty-Three", "Twenty-Four", "Twenty-Five", "Twenty-Six", "Twenty-Seven", "Twenty-Eight", "Twenty-Nine",
-            "Thirty", "Thirty-One", "Thirty-Two", "Thirty-Three", "Thirty-Four", "Thirty-Five", "Thirty-Six", "Thirty-Seven", "Thirty-Eight", "Thirty-Nine",
-            "Forty", "Forty-One", "Forty-Two", "Forty-Three", "Forty-Four", "Forty-Five", "Forty-Six", "Forty-Seven", "Forty-Eight", "Forty-Nine",
-            "Fifty"
+            "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven",
+            "Eight", "Nine",
+            "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
+            "Sixteen", "Seventeen", "Eighteen", "Nineteen",
+            "Twenty", "Twenty-One", "Twenty-Two", "Twenty-Three", 
+            "Twenty-Four", "Twenty-Five", "Twenty-Six", "Twenty-Seven",
+            "Twenty-Eight", "Twenty-Nine",
+            "Thirty", "Thirty-One", "Thirty-Two", "Thirty-Three",
+            "Thirty-Four", "Thirty-Five", "Thirty-Six", "Thirty-Seven",
+            "Thirty-Eight", "Thirty-Nine",
+            "Forty", "Forty-One", "Forty-Two", "Forty-Three", "Forty-Four",
+            "Forty-Five", "Forty-Six", "Forty-Seven", "Forty-Eight",
+            "Forty-Nine","Fifty"
         ));
 
         for (int i = 0; i <= 50; i++) {
@@ -68,7 +63,8 @@ public class LineairHashMapTest {
 
     @Test
     public void testGetOrDefault(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -88,7 +84,8 @@ public class LineairHashMapTest {
 
     @Test(expected = NoSuchElementException.class)
     public void testRemoveKey(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -104,7 +101,8 @@ public class LineairHashMapTest {
 
     @Test(expected = NoSuchElementException.class)
     public void testRemoveKeyAndValue(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -120,7 +118,8 @@ public class LineairHashMapTest {
 
     @Test(expected = NoSuchElementException.class)
     public void testRemoveKeyDontExcist(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -131,7 +130,8 @@ public class LineairHashMapTest {
     
     @Test(expected = NoSuchElementException.class)
     public void testRemoveKeyDontExcistWithValue(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);
@@ -142,7 +142,8 @@ public class LineairHashMapTest {
 
     @Test()
     public void testContainsKey(){
-        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
         h.put("One", 1);
         h.put("one", 1);

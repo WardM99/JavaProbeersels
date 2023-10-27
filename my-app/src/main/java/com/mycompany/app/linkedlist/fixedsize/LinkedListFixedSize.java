@@ -6,10 +6,12 @@ import com.mycompany.app.linkedlist.LinkedListInterface;
 import com.mycompany.app.linkedlist.Node;
 
 public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
-    
     private Node<T> head;
+
     private Node<T> currentNode;
+
     private int size;
+
     public LinkedListFixedSize(int size){
         this.size = size;
         this.head = new Node<T>(null);
@@ -35,7 +37,12 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     @Override
     public boolean contains(T value) {
         Node<T> current = this.head;
-        while(current != null && (current.getValue() == null || !current.getValue().equals(value))){
+        while(current != null && 
+              (
+                current.getValue() == null || 
+                !current.getValue().equals(value)
+              )
+            ){
             current = current.getNextNode();
         }
         return (current != null);
@@ -44,7 +51,12 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     @Override
     public void remove(T value) throws NoSuchElementException {
         Node<T> current = this.head;
-        while(current != null && (current.getValue() == null || !current.getValue().equals(value))){
+        while(current != null && 
+              (
+                current.getValue() == null || 
+                !current.getValue().equals(value)
+              )
+            ){
             current = current.getNextNode();
         }
         if(current == null)
@@ -78,7 +90,9 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
 
     @Override
     public void reverseLinkedList() {
-        Node<T> prev, next, current;
+        Node<T> prev;
+        Node<T> next;
+        Node<T> current;
         prev = null;
         current = this.head;
         while(current != null){

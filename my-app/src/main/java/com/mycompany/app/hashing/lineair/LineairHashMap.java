@@ -7,12 +7,16 @@ import com.mycompany.app.linkedlist.fixedsize.LinkedListFixedSize;
 import com.mycompany.app.linkedlist.LinkedList;
 
 public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
-
     private final double UPPERLOADFACTOR = 0.9;
+
     private final int BUCKETSIZE = 2;
+
     private LinkedList<Bucket<K,V>> buckets;
+
     private int n = 2;
+
     private int b = 1;
+    
     private int a = 0;
 
     private int nextIndexRefactor = 0;

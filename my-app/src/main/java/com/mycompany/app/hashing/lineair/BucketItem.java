@@ -2,6 +2,7 @@ package com.mycompany.app.hashing.lineair;
 
 public class BucketItem<K,V> {
     private K key;
+
     private V value;
 
     public BucketItem(K key, V value){
@@ -12,12 +13,15 @@ public class BucketItem<K,V> {
     public void setKey(K key) {
         this.key = key;
     }
+
     public void setValue(V value) {
         this.value = value;
     }
+
     public K getKey() {
         return key;
     }
+    
     public V getValue() {
         return value;
     }

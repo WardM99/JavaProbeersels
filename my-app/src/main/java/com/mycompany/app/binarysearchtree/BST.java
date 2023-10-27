@@ -21,10 +21,12 @@ public class BST<T> implements BSTInterface<T>{
             while(current != null){
                 prev = current;
                 Comparable<T> currentValue = current.getValue();
-                if(currentValue.compareTo(valueUnpacked) < 0){ //left child
+                if(currentValue.compareTo(valueUnpacked) < 0){
+                    //left child
                     current = current.getLeftChild();
                 }
-                else if(currentValue.compareTo(valueUnpacked) > 0){ //right child
+                else if(currentValue.compareTo(valueUnpacked) > 0){
+                    //right child
                     current = current.getRightChild();
                 }
                 else { // same value
@@ -52,10 +54,12 @@ public class BST<T> implements BSTInterface<T>{
             BSTNodeInterface<T> current = this.root;
             while(current != null && !stop){
                 Comparable<T> currentValue = current.getValue();
-                if(currentValue.compareTo(valueUnpacked) < 0){ //left child
+                if(currentValue.compareTo(valueUnpacked) < 0){
+                    //left child
                     current = current.getLeftChild();
                 }
-                else if(currentValue.compareTo(valueUnpacked) > 0){ //right child
+                else if(currentValue.compareTo(valueUnpacked) > 0){
+                    //right child
                     current = current.getRightChild();
                 }
                 else { // same value
@@ -66,11 +70,10 @@ public class BST<T> implements BSTInterface<T>{
         return stop;
     }
 
-    @Override
-    public void remove(Comparable<T> value) throws NoSuchElementException {
-        // find node to remove
-        T valueUnpacked = (T) value;
-        BSTNodeInterface<T> nodeToRemove = this.root, prev = null;
+    private BSTNodeInterface<T> findNodeToRemove(T valueUnpacked,
+                                                 boolean returnPrev){
+        BSTNodeInterface<T> nodeToRemove = this.root;
+        BSTNodeInterface<T> prev = null;
         boolean stop = false;
         while(nodeToRemove != null && !stop){
             Comparable<T> currentValue = nodeToRemove.getValue();
@@ -90,6 +93,18 @@ public class BST<T> implements BSTInterface<T>{
         if(nodeToRemove == null) {
             throw new NoSuchElementException();
         }
+        
+        return (returnPrev) ? prev : nodeToRemove;
+    }
+
+    @Override
+    public void remove(Comparable<T> value) throws NoSuchElementException {
+        // find node to remove
+        T valueUnpacked = (T) value;
+        BSTNodeInterface<T> nodeToRemove = findNodeToRemove(valueUnpacked,
+                                                            false);
+        BSTNodeInterface<T> prev = findNodeToRemove(valueUnpacked,true);
+
 
         // find largest node left or smallest node right
 
@@ -123,12 +138,21 @@ public class BST<T> implements BSTInterface<T>{
                 prev.setRightChild(newNode);
             }
         }
-        // fix childeren
+        // fix children
+        fixChildren(prevNode, newNode, nodeToRemove);
+    }
+
+    private void fixChildren(BSTNodeInterface<T> prevNode,
+                             BSTNodeInterface<T> newNode,
+                             BSTNodeInterface<T> nodeToRemove){
         if(prevNode != null){
-            if(newNode != null && prevNode.getRightChild().getValue().equals(newNode.getValue())){
+            if(newNode != null && 
+               prevNode.getRightChild().getValue().equals(newNode.getValue())){
                 prevNode.setRightChild(newNode.getLeftChild());
             }
-            else if(newNode != null && prevNode.getLeftChild().getValue().equals(newNode.getValue())){
+            else if(newNode != null && prevNode.getLeftChild()
+                                               .getValue()
+                                               .equals(newNode.getValue())){
                 prevNode.setLeftChild(newNode.getRightChild());
             }
         }

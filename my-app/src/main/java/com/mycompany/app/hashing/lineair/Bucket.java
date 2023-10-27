@@ -6,7 +6,9 @@ import com.mycompany.app.linkedlist.fixedsize.LinkedListFixedSize;
 
 public class Bucket<K, V> {
     private int size;
+
     private Bucket<K,V> overflowBucket;
+
     private LinkedListFixedSize<BucketItem<K,V>> items;
 
     public Bucket(int size){
@@ -78,9 +80,11 @@ public class Bucket<K, V> {
         }
         return item.getValue();
     }
+
     public Bucket<K, V> getOverflowBucket() {
         return overflowBucket;
     }
+    
     public LinkedListFixedSize<BucketItem<K, V>> getItems() {
         return items;
     }

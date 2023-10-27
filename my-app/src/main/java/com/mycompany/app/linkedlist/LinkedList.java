@@ -4,7 +4,9 @@ import java.util.NoSuchElementException;
 
 public class LinkedList<T> implements LinkedListInterface<T> {
     private Node<T> head;
+
     private Node<T> currentNode;
+
     private int size;
 
     public LinkedList() {
@@ -64,42 +66,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             }
         }
     }
-    /*
-    public void sort() {
-        if(this.head != null){
-            Node<T> pivot = this.head;
-            T pivotValue = (T) pivot.getValue();
-            Node<T> current = this.head.getNextNode();
-            LinkedList<T> left = new LinkedList<T>();
-            LinkedList<T> right = new LinkedList<T>();
-            while(current != null){
-                T currentValue = current.getValue();
-                //System.out.println(currentValue);
-                if(currentValue.compareTo(pivotValue) < 0)
-                    left.add(current.getValue());
-                else
-                    right.add(current.getValue());
-                current = current.getNextNode();
-            }
-            left.sort();
-            right.sort();
-            if(left.getHead() == null){
-                this.head = pivot;
-            }
-            else{
-                this.head = left.getHead();
-                current = this.head;
-                Node<T> previous = null;
-                while(current != null){
-                    previous = current;
-                    current = current.getNextNode();
-                }
-                previous.setNextNode(pivot);
-            }
-            pivot.setNextNode(right.getHead());
-        }
-    }
-    */
+
     public T getNext() {
         if(this.head == null)
             return null;
@@ -112,7 +79,9 @@ public class LinkedList<T> implements LinkedListInterface<T> {
     }
 
     public void reverseLinkedList() {
-        Node<T> prev, next, current;
+        Node<T> prev;
+        Node<T> next;
+        Node<T> current;
         prev = null;
         current = this.head;
         while(current != null){
