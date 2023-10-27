@@ -2,7 +2,9 @@ package com.mycompany.app.binarysearchtree;
 
 public class BSTNode<T> implements BSTNodeInterface<T> {
     private BSTNodeInterface<T> leftNode;
+
     private BSTNodeInterface<T> rightNode;
+    
     private Comparable<T> value;
 
     public BSTNode(Comparable<T> value){

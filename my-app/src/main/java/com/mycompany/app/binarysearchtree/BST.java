@@ -54,10 +54,12 @@ public class BST<T> implements BSTInterface<T>{
             BSTNodeInterface<T> current = this.root;
             while(current != null && !stop){
                 Comparable<T> currentValue = current.getValue();
-                if(currentValue.compareTo(valueUnpacked) < 0){ //left child
+                if(currentValue.compareTo(valueUnpacked) < 0){
+                    //left child
                     current = current.getLeftChild();
                 }
-                else if(currentValue.compareTo(valueUnpacked) > 0){ //right child
+                else if(currentValue.compareTo(valueUnpacked) > 0){
+                     //right child
                     current = current.getRightChild();
                 }
                 else { // same value
@@ -144,7 +146,8 @@ public class BST<T> implements BSTInterface<T>{
                              BSTNodeInterface<T> newNode,
                              BSTNodeInterface<T> nodeToRemove){
         if(prevNode != null){
-            if(newNode != null && prevNode.getRightChild().getValue().equals(newNode.getValue())){
+            if(newNode != null && 
+               prevNode.getRightChild().getValue().equals(newNode.getValue())){
                 prevNode.setRightChild(newNode.getLeftChild());
             }
             else if(newNode != null && prevNode.getLeftChild()
