@@ -21,6 +21,9 @@ public class QueueTest {
     public void basicTests(){
         q.enqueue(5);
         q.enqueue(6);
+        q.enqueue(7);
+        q.enqueue(8);
+        q.enqueue(9);
 
         int valuePeek = q.peek();
         int valuePop = q.dequeue();
