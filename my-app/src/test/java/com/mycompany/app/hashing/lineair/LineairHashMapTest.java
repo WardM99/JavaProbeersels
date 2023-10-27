@@ -1,6 +1,8 @@
 package com.mycompany.app.hashing.lineair;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -136,5 +138,24 @@ public class LineairHashMapTest {
         h.put("Hey! How are you?", 10);
 
         h.remove("Zero", 3);
+    }
+
+    @Test()
+    public void testContainsKey(){
+        LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
+        h.put("Zero", 0);
+        h.put("One", 1);
+        h.put("one", 1);
+        h.put("Hey! How are you?", 10);
+
+        assertTrue(h.containsKey("Zero"));
+        assertTrue(h.containsKey("One"));
+        assertTrue(h.containsKey("one"));
+        assertTrue(h.containsKey("Hey! How are you?"));
+        assertFalse(h.containsKey("Hey, How are you?"));
+
+        h.remove("one");
+
+        assertFalse(h.containsKey("one"));
     }
 }

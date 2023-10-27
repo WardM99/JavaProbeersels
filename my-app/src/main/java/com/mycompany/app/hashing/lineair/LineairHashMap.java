@@ -145,8 +145,13 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     @Override
     public boolean containsKey(K key) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'containsKey'");
+        try{
+            get(key);
+            return true;
+        }
+        catch(NoSuchElementException e){
+            return false;
+        }
     }
     
 }
