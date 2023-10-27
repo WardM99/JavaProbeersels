@@ -125,7 +125,9 @@ public class LineairHashMapTest {
         h.put("Hey! How are you?", 10);
 
         h.remove("zero");
-    } @Test(expected = NoSuchElementException.class)
+    } 
+    
+    @Test(expected = NoSuchElementException.class)
     public void testRemoveKeyDontExcistWithValue(){
         LineairHashMap<String, Integer> h = new LineairHashMap<String, Integer>();
         h.put("Zero", 0);
