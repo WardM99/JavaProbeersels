@@ -26,6 +26,16 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     @Override
     public void put(K key, V value) {
+        
+        Bucket<K,V> inserBucket = getBucket(key);
+        inserBucket.add(key, value);
+        this.a++;
+        double loadfactor = (this.a)/(1.0*this.n*this.BUCKETSIZE);
+        if(loadfactor >= UPPERLOADFACTOR)
+            reorgenize();
+    }
+
+    private Bucket<K,V> getBucket(K key){
         int hash = key.hashCode();
         int mask = getMask();
         int indexValue = hash&mask;
@@ -33,12 +43,7 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
             mask = mask >>1;
             indexValue = hash&(mask);
         }
-        Bucket<K,V> inserBucket = this.buckets.getAt(indexValue);
-        inserBucket.add(key, value);
-        this.a++;
-        double loadfactor = (this.a)/(1.0*this.n*this.BUCKETSIZE);
-        if(loadfactor >= UPPERLOADFACTOR)
-            reorgenize();
+        return this.buckets.getAt(indexValue);
     }
 
     private int getMask(){
@@ -51,7 +56,6 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     private void reorgenize(){
         // add new bucket
-        
         Bucket<K,V> newBucket = new Bucket<K,V>(BUCKETSIZE);
         this.buckets.add(newBucket);
         this.n = this.buckets.size();
@@ -88,28 +92,14 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     @Override
     public V get(K key) throws NoSuchElementException {
-        int hash = key.hashCode();
-        int mask = getMask();
-        int indexValue = hash&mask;
-        if(indexValue >= this.n){
-            mask = mask >>1;
-            indexValue = hash&(mask);
-        }
-        Bucket<K,V> searchBucket = this.buckets.getAt(indexValue);
+        Bucket<K,V> searchBucket = getBucket(key);
         return searchBucket.get(key);
     }
 
     @Override
     public V getOrDefault(K key, V defaultValue) {
         try{
-            int hash = key.hashCode();
-            int mask = getMask();
-            int indexValue = hash&mask;
-            if(indexValue >= this.n){
-                mask = mask >>1;
-                indexValue = hash&(mask);
-            }
-            Bucket<K,V> searchBucket = this.buckets.getAt(indexValue);
+            Bucket<K,V> searchBucket = getBucket(key);
             return searchBucket.get(key);
         }
         catch(NoSuchElementException e){
@@ -119,27 +109,13 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     @Override
     public void remove(K key) throws NoSuchElementException {
-        int hash = key.hashCode();
-        int mask = getMask();
-        int indexValue = hash&mask;
-        if(indexValue >= this.n){
-            mask = mask >>1;
-            indexValue = hash&(mask);
-        }
-        Bucket<K,V> removeBucket = this.buckets.getAt(indexValue);
+        Bucket<K,V> removeBucket = getBucket(key);
         removeBucket.remove(key);
     }
 
     @Override
     public void remove(K key, V value) throws NoSuchElementException {
-        int hash = key.hashCode();
-        int mask = getMask();
-        int indexValue = hash&mask;
-        if(indexValue >= this.n){
-            mask = mask >>1;
-            indexValue = hash&(mask);
-        }
-        Bucket<K,V> removeBucket = this.buckets.getAt(indexValue);
+        Bucket<K,V> removeBucket = getBucket(key);
         removeBucket.remove(key, value);
     }
 
