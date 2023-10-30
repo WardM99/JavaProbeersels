@@ -18,6 +18,30 @@ public class Bucket<K, V> {
     }
 
     public void add(K key, V value){
+        //search if Item is in bucket
+        boolean found = false;
+        int i = 0;
+        BucketItem<K,V> item = null;
+        while(!found && i < this.size){
+            item = this.items.getAt(i);
+            if(item != null && item.getKey() == key){
+                found = true;
+            }
+            else{
+                i++;
+            }
+        }
+
+        if(!found)
+            addNewItem(key, value);
+        else{
+            item.setValue(value);
+        }
+
+        
+    }
+
+    private void addNewItem(K key, V value){
         BucketItem<K,V> newItem = new BucketItem<K,V>(key, value);
         if(this.items.isFull()){
             if(this.overflowBucket == null)

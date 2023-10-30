@@ -140,7 +140,7 @@ public class LineairHashMapTest {
         h.remove("Zero", 3);
     }
 
-    @Test()
+    @Test
     public void testContainsKey(){
         LineairHashMap<String, Integer> h = 
             new LineairHashMap<String, Integer>();
@@ -158,5 +158,19 @@ public class LineairHashMapTest {
         h.remove("one");
 
         assertFalse(h.containsKey("one"));
+    }
+
+    @Test
+    public void testDublicate(){
+        LineairHashMap<String, Integer> h = 
+            new LineairHashMap<String, Integer>();
+
+        h.put("Zero", 0);
+
+        assertEquals(Integer.valueOf(0), h.get("Zero"));
+
+        h.put("Zero", 10);
+
+        assertEquals(Integer.valueOf(10), h.get("Zero"));
     }
 }
