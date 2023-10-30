@@ -1,41 +1,85 @@
 package com.mycompany.app.queue;
 
+import java.util.EmptyStackException;
+
+import com.mycompany.app.linkedlist.Node;
+
 public class DoubleEndedQueue<T> implements DoubleEndedQueueInterface<T> {
+
+    Node<T> head;
+
+    Node<T> tail;
+
+    public DoubleEndedQueue(){
+        this.head = null;
+        this.tail = null;
+    }
 
     @Override
     public void pushBack(T value) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pushBack'");
+        Node<T> newNode = new Node<T>(value);
+        if(this.head == null){
+            this.head = newNode;
+        }
+        if(this.tail != null){
+            this.tail.setNextNode(newNode);
+        }
+
+        this.tail = newNode;
     }
 
     @Override
     public void pushFront(T value) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pushFrond'");
+        Node<T> newNode = new Node<T>(value);
+        if(this.tail == null){
+            this.tail = newNode;
+        }
+        newNode.setNextNode(this.head);
+        this.head = newNode;
     }
 
     @Override
-    public T popBack() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'popBack'");
+    public T popBack() throws EmptyStackException {
+        if(this.tail == null)
+            throw new EmptyStackException();
+        T value = this.tail.getValue();
+        Node<T> prev = null;
+        Node<T> current = this.head;
+
+        while (!current.equals(this.tail)) {
+            prev = current;
+            current = current.getNextNode();
+        }
+        
+        this.tail = prev;
+
+        if(this.tail == null)
+            this.head = null;
+
+        return value;
     }
 
     @Override
-    public T popFront() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'popFront'");
+    public T popFront() throws EmptyStackException {
+        if(this.head == null)
+            throw new EmptyStackException();
+        T value = this.head.getValue();
+        this.head = this.head.getNextNode();
+
+        if(this.head == null)
+            this.tail = null;
+
+        return value;
     }
 
     @Override
     public T peekBack() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'peekBack'");
+        return this.tail.getValue();
     }
 
     @Override
     public T peekFront() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'peekFront'");
+        return this.head.getValue();
     }
     
 }

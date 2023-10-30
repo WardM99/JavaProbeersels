@@ -2,6 +2,8 @@ package com.mycompany.app.queue;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.EmptyStackException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,6 +13,16 @@ public class DoubleEndedQueueTest {
     @Before
     public void setUp(){
         queue = new DoubleEndedQueue<Integer>();
+    }
+
+    @Test(expected = EmptyStackException.class)
+    public void testEmptyPopBack(){
+        queue.popBack();
+    }
+
+    @Test(expected = EmptyStackException.class)
+    public void testEmptyPopFront(){
+        queue.popFront();
     }
 
     @Test
@@ -24,13 +36,33 @@ public class DoubleEndedQueueTest {
     }
 
     @Test
+    public void testPushBackAndPopFront() {
+
+        queue.pushBack(1);
+        queue.pushBack(2);
+
+        assertEquals(Integer.valueOf(1), queue.popFront());
+        assertEquals(Integer.valueOf(2), queue.popFront());
+    }
+
+    @Test
     public void testPushAndPopFront() {
         
         queue.pushFront(10);
         queue.pushFront(5);
 
-        assertEquals(Integer.valueOf(10), queue.popFront());
         assertEquals(Integer.valueOf(5), queue.popFront());
+        assertEquals(Integer.valueOf(10), queue.popFront());
+    }
+
+    @Test
+    public void testPushFrontAndPopBack() {
+        
+        queue.pushFront(10);
+        queue.pushFront(5);
+
+        assertEquals(Integer.valueOf(10), queue.popBack());
+        assertEquals(Integer.valueOf(5), queue.popBack());
     }
 
     @Test
@@ -48,7 +80,31 @@ public class DoubleEndedQueueTest {
         queue.pushFront(3);
         queue.pushFront(2);
 
-        assertEquals(Double.valueOf(3), queue.peekFront());
-        assertEquals(Double.valueOf(3), queue.peekFront());
+        assertEquals(Integer.valueOf(2), queue.peekFront());
+        assertEquals(Integer.valueOf(2), queue.peekFront());
+    }
+
+    @Test(expected = EmptyStackException.class)
+    public void testPushAndPopFrontAndPopBack() {
+        
+        queue.pushFront(10);
+        queue.pushFront(5);
+
+        assertEquals(Integer.valueOf(5), queue.popFront());
+        assertEquals(Integer.valueOf(10), queue.popFront());
+
+        queue.popBack();
+    }
+
+    @Test(expected = EmptyStackException.class)
+    public void testPushAndPopBackAndPopFront() {
+
+        queue.pushBack(1);
+        queue.pushBack(2);
+
+        assertEquals(Integer.valueOf(2), queue.popBack());
+        assertEquals(Integer.valueOf(1), queue.popBack());
+
+        queue.popFront();
     }
 }
