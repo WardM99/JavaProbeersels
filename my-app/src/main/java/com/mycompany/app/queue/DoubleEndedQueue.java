@@ -9,7 +9,7 @@ public class DoubleEndedQueue<T> implements DoubleEndedQueueInterface<T> {
     }
 
     @Override
-    public void pushFrond(T value) {
+    public void pushFront(T value) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'pushFrond'");
     }

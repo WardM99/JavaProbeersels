@@ -3,7 +3,7 @@ package com.mycompany.app.queue;
 public interface DoubleEndedQueueInterface<T> {
     public void pushBack(T value);
 
-    public void pushFrond(T value);
+    public void pushFront(T value);
 
     public T popBack();
 
