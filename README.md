@@ -13,3 +13,6 @@ Java implementation of most important data structures.
   * LinkedList
   * LinkedList with a fixed size
 * Stack
+* Queue
+  * Single ended queue
+  * Double ended queue
