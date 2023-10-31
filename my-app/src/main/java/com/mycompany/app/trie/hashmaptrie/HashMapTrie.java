@@ -5,7 +5,7 @@ import com.mycompany.app.trie.Trie;
 public class HashMapTrie extends Trie {
 
   public HashMapTrie() { 
-    setFactory(new NodeFactory());
+    super(new NodeFactory());
   }
 
 }

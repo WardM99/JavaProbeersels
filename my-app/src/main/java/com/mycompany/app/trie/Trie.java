@@ -5,6 +5,11 @@ public abstract class Trie implements TrieInterface {
     private NodeInterface head;
     private NodeFactoryInterface nodeFactory;
 
+    public Trie(NodeFactoryInterface nodeFactory){
+        this.nodeFactory = nodeFactory;
+        this.head = this.nodeFactory.newNode();
+    }
+
     @Override
     public void insert(String word){
         String newWord = word + '\u0000';
@@ -82,10 +87,5 @@ public abstract class Trie implements TrieInterface {
         currentChar = searchWord.charAt(i);
       }
       return currentNode != null;
-    }
-
-    public void setFactory(NodeFactoryInterface nodeFactory) {
-        this.nodeFactory = nodeFactory;
-        this.head = nodeFactory.newNode();
     }
 }
