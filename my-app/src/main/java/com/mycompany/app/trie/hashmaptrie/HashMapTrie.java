@@ -41,8 +41,8 @@ public class HashMapTrie implements TrieInterface {
         charNewWord = newWord.charAt(i);
         charOldWord = prevNode.getWord().charAt(i);
       }
-      System.out.println((int) charNewWord);
-      System.out.println((int) charOldWord);
+      System.out.println((int)charNewWord);
+      System.out.println((int)charOldWord);
       prevPrevNode.addNextNode(charOldWord, prevNode);
       prevPrevNode.addNextNode(charNewWord, newLeaf);
     }
@@ -79,7 +79,8 @@ public class HashMapTrie implements TrieInterface {
     char currentChar = searchWord.charAt(i);
     Node currentNode = this.head;
 
-    while (currentNode != null && !currentNode.isLeaf() && currentChar != '\u0000') {
+    while (currentNode != null && !currentNode.isLeaf() &&
+           currentChar != '\u0000') {
       currentNode = currentNode.getNextNode(currentChar);
       i++;
       currentChar = searchWord.charAt(i);
