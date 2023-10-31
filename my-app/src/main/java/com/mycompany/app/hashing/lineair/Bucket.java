@@ -89,7 +89,7 @@ public class Bucket<K, V> {
         BucketItem<K,V> item = null;
         while(!found && i < this.size){
             item = this.items.getAt(i);
-            if(item != null && item.getKey() == key){
+            if(item != null && item.getKey().equals(key)){
                 found = true;
             }
             else{
