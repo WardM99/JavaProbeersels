@@ -7,14 +7,12 @@ public class NodeFactory implements NodeFactoryInterface {
 
     @Override
     public NodeInterface newLeaf(String word) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'newLeaf'");
+        return new TernaryTrieNode(word);
     }
 
     @Override
     public NodeInterface newNode() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'newNode'");
+        return new TernaryTrieNode();
     }
     
 }
