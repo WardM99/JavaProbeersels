@@ -3,6 +3,7 @@ package com.mycompany.app.trie;
 
 public abstract class Trie implements TrieInterface {
     private NodeInterface head;
+    
     private NodeFactoryInterface nodeFactory;
 
     public Trie(NodeFactoryInterface nodeFactory){
