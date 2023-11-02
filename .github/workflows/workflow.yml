@@ -12,22 +12,64 @@ defaults:
     working-directory: my-app
 
 jobs:
-  Validate: 
+  Validate-Ubuntu: 
     runs-on: ubuntu-latest
     container: maven:3.9.4-eclipse-temurin-17-alpine
     steps:
       - uses: actions/checkout@v4
       - run: mvn validate
-  Compile:
-    needs: [Validate]
+  Compile-Ubuntu:
+    needs: [Validate-Ubuntu]
     runs-on: ubuntu-latest
     container: maven:3.9.4-eclipse-temurin-17-alpine
     steps:
       - uses: actions/checkout@v4
       - run: mvn compile
-  Test:
-    needs: [Compile]
+  Test-Ubuntu:
+    needs: [Compile-Ubuntu]
     runs-on: ubuntu-latest
+    container: maven:3.9.4-eclipse-temurin-17-alpine
+    steps:
+      - uses: actions/checkout@v4
+      - run: mvn test
+      
+  Validate-Windows: 
+    runs-on: windows-latest
+    container: maven:3.9.4-eclipse-temurin-17-alpine
+    steps:
+      - uses: actions/checkout@v4
+      - run: mvn validate
+  Compile-Windows:
+    needs: [Validate-Windows]
+    runs-on: windows-latest
+    container: maven:3.9.4-eclipse-temurin-17-alpine
+    steps:
+      - uses: actions/checkout@v4
+      - run: mvn compile
+  Test-Windows:
+    needs: [Compile-Windows]
+    runs-on: windows-latest
+    container: maven:3.9.4-eclipse-temurin-17-alpine
+    steps:
+      - uses: actions/checkout@v4
+      - run: mvn test
+
+  Validate-macOS: 
+    runs-on: macos-latest
+    container: maven:3.9.4-eclipse-temurin-17-alpine
+    steps:
+      - uses: actions/checkout@v4
+      - run: mvn validate
+  Compile-macOS:
+    needs: [Validate-macOS]
+    runs-on: macos-latest
+    container: maven:3.9.4-eclipse-temurin-17-alpine
+    steps:
+      - uses: actions/checkout@v4
+      - run: mvn compile
+  Test-macOS:
+    needs: [Compile-macOS]
+    runs-on: macos-latest
     container: maven:3.9.4-eclipse-temurin-17-alpine
     steps:
       - uses: actions/checkout@v4
