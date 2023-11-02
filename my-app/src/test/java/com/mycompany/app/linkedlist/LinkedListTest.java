@@ -1,12 +1,13 @@
 package com.mycompany.app.linkedlist;
 
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.NoSuchElementException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class LinkedListTest {
     @Test 
@@ -44,7 +45,7 @@ public class LinkedListTest {
         assertTrue(l.contains(7));
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void removeElementThatDontExcist(){
         LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(5);
@@ -52,7 +53,9 @@ public class LinkedListTest {
         l.add(7);
         assertTrue(l.size()==3);
         assertFalse(l.contains(10));
-        l.remove(10);
+        assertThrows(NoSuchElementException.class, () -> {
+            l.remove(10);
+        });
         assertTrue(l.size()==3);
     }
 
@@ -185,7 +188,7 @@ public class LinkedListTest {
         assertTrue(l.getAt(4).equals(9));
     }
     
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testGetAtGiveIndexOutOfBoundException(){
         LinkedListInterface<Integer> l = new LinkedList<Integer>();
         l.add(5);
@@ -193,6 +196,8 @@ public class LinkedListTest {
         l.add(7);
         l.add(8);
         l.add(9);
-        l.getAt(10);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            l.getAt(10);
+        });
     }
 }
