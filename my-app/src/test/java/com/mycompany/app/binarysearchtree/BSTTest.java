@@ -1,18 +1,21 @@
 package com.mycompany.app.binarysearchtree;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.NoSuchElementException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class BSTTest {
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testAddDublicate(){
         BSTInterface<Integer> b = new BST<Integer>();
         b.add(5);
-        b.add(5);
+        assertThrows(IllegalArgumentException.class, () -> {
+            b.add(5);
+        });
     }
 
     @Test
@@ -106,7 +109,7 @@ public class BSTTest {
         assertTrue(b.contains(35));
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void testRemoveDontExcist(){
         BSTInterface<Integer> b = new BST<Integer>();
         b.add(5);
@@ -114,6 +117,8 @@ public class BSTTest {
         b.add(10);
         b.add(6);
         assertFalse(b.contains(50));
-        b.remove(50);
+        assertThrows(NoSuchElementException.class, () -> {
+            b.remove(50);
+        });
     }
 }

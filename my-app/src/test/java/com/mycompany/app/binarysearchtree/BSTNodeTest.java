@@ -1,14 +1,14 @@
 package com.mycompany.app.binarysearchtree;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class BSTNodeTest {
     @Test
     public void getCorrectValue(){
         BSTNodeInterface<Integer> n = new BSTNode<Integer>(5);
-        assertTrue(n.getValue().equals(5));
+        assertEquals(5, n.getValue());
     }
     
     @Test
@@ -20,7 +20,7 @@ public class BSTNodeTest {
         n.setLeftChild(l);
         n.setRightChild(r);
 
-        assertTrue(n.getLeftChild().getValue().equals(4));
-        assertTrue(n.getRightChild().getValue().equals(6));
+        assertEquals(4, n.getLeftChild().getValue());
+        assertEquals(6, n.getRightChild().getValue());
     }
 }

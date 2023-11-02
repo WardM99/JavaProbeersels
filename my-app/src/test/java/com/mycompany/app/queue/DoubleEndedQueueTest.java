@@ -1,28 +1,33 @@
 package com.mycompany.app.queue;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.EmptyStackException;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 public class DoubleEndedQueueTest {
     private DoubleEndedQueueInterface<Integer> queue;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         queue = new DoubleEndedQueue<Integer>();
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void testEmptyPopBack(){
-        queue.popBack();
+        assertThrows(EmptyStackException.class, () -> {
+            queue.popBack();
+        });
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void testEmptyPopFront(){
-        queue.popFront();
+        assertThrows(EmptyStackException.class, () -> {
+            queue.popFront();
+        });
     }
 
     @Test
@@ -84,7 +89,7 @@ public class DoubleEndedQueueTest {
         assertEquals(Integer.valueOf(2), queue.peekFront());
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void testPushAndPopFrontAndPopBack() {
         
         queue.pushFront(10);
@@ -93,10 +98,12 @@ public class DoubleEndedQueueTest {
         assertEquals(Integer.valueOf(5), queue.popFront());
         assertEquals(Integer.valueOf(10), queue.popFront());
 
-        queue.popBack();
+        assertThrows(EmptyStackException.class, () -> {
+            queue.popBack();
+        });
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void testPushAndPopBackAndPopFront() {
 
         queue.pushBack(1);
@@ -104,7 +111,9 @@ public class DoubleEndedQueueTest {
 
         assertEquals(Integer.valueOf(2), queue.popBack());
         assertEquals(Integer.valueOf(1), queue.popBack());
-
-        queue.popFront();
+        
+        assertThrows(EmptyStackException.class, () -> {
+            queue.popFront();
+        });
     }
 }

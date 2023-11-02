@@ -1,15 +1,16 @@
 package com.mycompany.app.hashing.lineair;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class LineairHashMapTest {
     @Test
@@ -82,7 +83,7 @@ public class LineairHashMapTest {
         assertEquals(6,value);
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void testRemoveKey(){
         LineairHashMap<String, Integer> h = 
             new LineairHashMap<String, Integer>();
@@ -95,11 +96,12 @@ public class LineairHashMapTest {
         assertEquals(0,value);
 
         h.remove("Zero");
-
-        h.get("Zero");
+        assertThrows(NoSuchElementException.class, () -> {
+            h.get("Zero");
+        });
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void testRemoveKeyAndValue(){
         LineairHashMap<String, Integer> h = 
             new LineairHashMap<String, Integer>();
@@ -112,11 +114,12 @@ public class LineairHashMapTest {
         assertEquals(0,value);
 
         h.remove("Zero",0);
-
-        h.get("Zero");
+        assertThrows(NoSuchElementException.class, () -> {
+            h.get("Zero");
+        });
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void testRemoveKeyDontExcist(){
         LineairHashMap<String, Integer> h = 
             new LineairHashMap<String, Integer>();
@@ -124,11 +127,12 @@ public class LineairHashMapTest {
         h.put("One", 1);
         h.put("one", 1);
         h.put("Hey! How are you?", 10);
-
-        h.remove("zero");
+        assertThrows(NoSuchElementException.class, () -> {
+            h.remove("zero");
+        });
     } 
     
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void testRemoveKeyDontExcistWithValue(){
         LineairHashMap<String, Integer> h = 
             new LineairHashMap<String, Integer>();
@@ -136,8 +140,9 @@ public class LineairHashMapTest {
         h.put("One", 1);
         h.put("one", 1);
         h.put("Hey! How are you?", 10);
-
-        h.remove("Zero", 3);
+        assertThrows(NoSuchElementException.class, () -> {
+            h.remove("Zero", 3);
+        });
     }
 
     @Test
