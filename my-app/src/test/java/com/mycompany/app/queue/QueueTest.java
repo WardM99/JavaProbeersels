@@ -1,18 +1,19 @@
 package com.mycompany.app.queue;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.EmptyStackException;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 public class QueueTest {
     private QueueInterface<Integer> q;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         q = new Queue<Integer>();
     }
@@ -44,8 +45,10 @@ public class QueueTest {
         assertNull(valuePeek);
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void popEmptyStackTest(){
-        q.dequeue();
+        assertThrows(EmptyStackException.class, () -> {
+            q.dequeue();
+        });
     }
 }

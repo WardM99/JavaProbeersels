@@ -1,18 +1,19 @@
 package com.mycompany.app.stack;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.EmptyStackException;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class StackTest {
     private Stack<Integer> s;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         s = new Stack<>();
     }
@@ -41,9 +42,11 @@ public class StackTest {
         assertNull(valuePeek);
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void popEmptyStackTest(){
-        s.pop();
+        assertThrows(EmptyStackException.class, () -> {
+            s.pop();
+        });
     }
     
     @Test

@@ -2,11 +2,11 @@ package com.mycompany.app.trie.hashmaptrie;
 
 import com.mycompany.app.trie.TrieTest;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 
 public class HashMapTrieTest extends TrieTest{
 
-  @Before
+  @BeforeEach
   public void setUp() {
     setTrie(new HashMapTrie());
   }
