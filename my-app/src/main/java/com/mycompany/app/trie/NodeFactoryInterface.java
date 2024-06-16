@@ -1,7 +1,7 @@
 package com.mycompany.app.trie;
 
 public interface NodeFactoryInterface {
-    public NodeInterface newLeaf(String word);
+    NodeInterface newLeaf(String word);
 
-    public NodeInterface newNode();
+    NodeInterface newNode();
 }

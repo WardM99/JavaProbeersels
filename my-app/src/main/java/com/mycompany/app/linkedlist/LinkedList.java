@@ -54,6 +54,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
                     this.head = current.getNextNode();
                 }
                 else{
+                    assert previous != null;
                     previous.setNextNode(current.getNextNode());
                 }
                 if(this.currentNode == current) {
@@ -73,7 +74,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
         if(this.currentNode == null)
             this.currentNode = this.head;
               
-        T value = (T) currentNode.getValue();
+        T value = currentNode.getValue();
         this.currentNode = this.currentNode.getNextNode();
         return value;
     }
@@ -107,7 +108,7 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             }
             i++;
         }
-        return (T) current.getValue();
+        return current.getValue();
     }
 
     public Node<T> getHead() {

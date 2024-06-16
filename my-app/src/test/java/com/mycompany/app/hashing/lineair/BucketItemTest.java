@@ -1,9 +1,8 @@
 package com.mycompany.app.hashing.lineair;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BucketItemTest {
     @Test
@@ -18,9 +17,9 @@ public class BucketItemTest {
             new BucketItem<String,Integer>("LEST", 6);
         BucketItem<String, Integer> bi5 =
             new BucketItem<String,Integer>("TEST", 5);
-        assertTrue(bi1.equals(bi2));
-        assertFalse(bi1.equals(bi3));
-        assertFalse(bi1.equals(bi4));
-        assertTrue(bi1.equals(bi5));
+        assertEquals(bi1, bi2);
+        assertNotEquals(bi1, bi3);
+        assertNotEquals(bi1, bi4);
+        assertEquals(bi1, bi5);
     }
 }

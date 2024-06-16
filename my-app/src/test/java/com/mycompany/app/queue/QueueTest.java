@@ -32,7 +32,7 @@ public class QueueTest {
         assertEquals(5, valuePeek);
         assertEquals(5, valuePop);
 
-        assertTrue(valuePeek == valuePop);
+        assertEquals(valuePeek, valuePop);
 
         valuePeek = q.peek();
         assertEquals(6, valuePeek);

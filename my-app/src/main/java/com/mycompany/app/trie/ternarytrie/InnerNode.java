@@ -3,7 +3,7 @@ package com.mycompany.app.trie.ternarytrie;
 import com.mycompany.app.trie.NodeInterface;
 
 public class InnerNode {
-    private char character;
+    private final char character;
 
     private NodeInterface node;
 
@@ -18,7 +18,7 @@ public class InnerNode {
         this.rightChild = null;
     }
 
-    public void addInnerNode(char character, NodeInterface node){
+    public void addInnerNode(char character, NodeInterface node) {
         if(character == this.character)
             this.node = node;
         else
@@ -29,19 +29,18 @@ public class InnerNode {
         InnerNode newNode = new InnerNode(character, node);
         InnerNode currentNode = this;
         boolean stop = false;
-        while (!stop) {
-            if(character < currentNode.character){
+        while(!stop) {
+            if(character < currentNode.character) {
                 if(currentNode.leftChild != null)
                     currentNode = currentNode.leftChild;
-                else{
+                else {
                     stop = true;
                     currentNode.leftChild = newNode;
                 }
-            }
-            else if(character > currentNode.character){
+            } else if(character > currentNode.character) {
                 if(currentNode.rightChild != null)
                     currentNode = currentNode.rightChild;
-                else{
+                else {
                     stop = true;
                     currentNode.rightChild = newNode;
                 }
@@ -49,19 +48,17 @@ public class InnerNode {
         }
     }
 
-    public NodeInterface getNextNode(char character){
+    public NodeInterface getNextNode(char character) {
         InnerNode current = this;
         boolean stop = false;
 
-        while (!stop) {
-            if(current == null || current.character == character){
+        while(!stop) {
+            if(current == null || current.character == character) {
                 stop = true;
-            }
-            else{
+            } else {
                 if(character < current.character)
                     current = current.leftChild;
-                else if(character > current.character)
-                    current = current.rightChild;
+                else current = current.rightChild;
             }
         }
 

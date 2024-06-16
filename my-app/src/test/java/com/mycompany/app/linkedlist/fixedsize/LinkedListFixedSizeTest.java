@@ -1,14 +1,12 @@
 package com.mycompany.app.linkedlist.fixedsize;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 
 import com.mycompany.app.linkedlist.LinkedListInterface;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LinkedListFixedSizeTest {
     @Test 
@@ -72,7 +70,7 @@ public class LinkedListFixedSizeTest {
     public void testGetNextNothing(){
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
         Integer n = l.getNext();
-        assertTrue(n==null);
+        assertNull(n);
     }
 
     @Test
@@ -80,7 +78,7 @@ public class LinkedListFixedSizeTest {
         LinkedListInterface<Integer> l = new LinkedListFixedSize<Integer>(10);
         l.add(5);
         Integer n = l.getNext();
-        assertTrue(n.equals(5));
+        assertEquals(5, (int) n);
     }
 
     @Test
@@ -89,11 +87,11 @@ public class LinkedListFixedSizeTest {
         l.add(5);
         l.add(6);
         Integer n = l.getNext();
-        assertTrue(n.equals(5));
+        assertEquals(5, (int) n);
         n = l.getNext();
-        assertTrue(n.equals(6));
+        assertEquals(6, (int) n);
         n = l.getNext();
-        assertTrue(n.equals(5));
+        assertEquals(5, (int) n);
     }
 
     @Test
@@ -105,11 +103,11 @@ public class LinkedListFixedSizeTest {
         l.add(8);
         l.add(9);
         Integer n = l.getNext();
-        assertTrue(n.equals(5));
+        assertEquals(5, (int) n);
         l.remove(6);
         n = l.getNext();
-        assertFalse(n.equals(6));
-        assertTrue(n.equals(7));
+        assertNotEquals(6, (int) n);
+        assertEquals(7, (int) n);
     }
 
     @Test
@@ -121,10 +119,10 @@ public class LinkedListFixedSizeTest {
         l.add(8);
         l.add(9);
         Integer n = l.getNext();
-        assertTrue(n.equals(5));
+        assertEquals(5, (int) n);
         l.remove(5);
         n = l.getNext();
-        assertTrue(n.equals(6));
+        assertEquals(6, (int) n);
     }
 
     @Test
@@ -140,8 +138,8 @@ public class LinkedListFixedSizeTest {
             n = l.getNext();
         l.remove(9);
         n = l.getNext();
-        assertFalse(n.equals(9));
-        assertTrue(n.equals(5));
+        assertNotEquals(9, (int) n);
+        assertEquals(5, (int) n);
     }
 
     @Test
@@ -153,7 +151,7 @@ public class LinkedListFixedSizeTest {
         Integer n = 0;
         for(int i = 8; i >= 5; i--){
             n = l.getNext();
-            assertTrue(n == i);
+            assertEquals((int) n, i);
         }
     }
 
@@ -165,13 +163,13 @@ public class LinkedListFixedSizeTest {
         l.add(7);
         l.add(8);
         l.add(9);
-        assertTrue(l.size()==10);
+        assertEquals(10, l.size());
         l.add(2);
-        assertTrue(l.size()==10);
+        assertEquals(10, l.size());
         l.remove(6);
-        assertTrue(l.size()==10);
+        assertEquals(10, l.size());
         l.remove(5);
-        assertTrue(l.size()==10);
+        assertEquals(10, l.size());
     }
 
     @Test
@@ -182,9 +180,9 @@ public class LinkedListFixedSizeTest {
         l.add(7);
         l.add(8);
         l.add(9);
-        assertTrue(l.getAt(0).equals(5));
-        assertTrue(l.getAt(2).equals(7));
-        assertTrue(l.getAt(4).equals(9));
+        assertEquals(5, (int) l.getAt(0));
+        assertEquals(7, (int) l.getAt(2));
+        assertEquals(9, (int) l.getAt(4));
     }
 
     @Test

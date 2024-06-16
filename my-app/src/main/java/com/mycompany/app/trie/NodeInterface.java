@@ -1,11 +1,11 @@
 package com.mycompany.app.trie;
 
 public interface NodeInterface {
-    public NodeInterface getNextNode(Character c);
+    NodeInterface getNextNode(Character c);
 
-    public void addNextNode(char c, NodeInterface n);
+    void addNextNode(char c, NodeInterface n);
 
-    public boolean isLeaf();
+    boolean isLeaf();
 
-    public String getWord();
+    String getWord();
 }

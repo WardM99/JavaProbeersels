@@ -1,13 +1,13 @@
 package com.mycompany.app.binarysearchtree;
 
 public interface BSTNodeInterface<T> {
-    public Comparable<T> getValue();
+    Comparable<T> getValue();
 
-    public void setLeftChild(BSTNodeInterface<T> leftChild);
+    void setLeftChild(BSTNodeInterface<T> leftChild);
 
-    public void setRightChild(BSTNodeInterface<T> rightChild);
+    void setRightChild(BSTNodeInterface<T> rightChild);
 
-    public BSTNodeInterface<T> getLeftChild();
+    BSTNodeInterface<T> getLeftChild();
     
-    public BSTNodeInterface<T> getRightChild();
+    BSTNodeInterface<T> getRightChild();
 }
