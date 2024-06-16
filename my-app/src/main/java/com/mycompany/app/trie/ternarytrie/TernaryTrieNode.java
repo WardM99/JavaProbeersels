@@ -3,9 +3,9 @@ package com.mycompany.app.trie.ternarytrie;
 import com.mycompany.app.trie.NodeInterface;
 
 public class TernaryTrieNode implements NodeInterface {
-    private boolean leaf;
+    private final boolean leaf;
 
-    private String word;
+    private final String word;
 
     private InnerNode head;
 

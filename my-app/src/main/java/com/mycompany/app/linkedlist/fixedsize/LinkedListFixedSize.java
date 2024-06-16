@@ -1,23 +1,23 @@
 package com.mycompany.app.linkedlist.fixedsize;
 
-import java.util.NoSuchElementException;
-
 import com.mycompany.app.linkedlist.LinkedListInterface;
 import com.mycompany.app.linkedlist.Node;
+
+import java.util.NoSuchElementException;
 
 public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     private Node<T> head;
 
     private Node<T> currentNode;
 
-    private int size;
+    private final int size;
 
-    public LinkedListFixedSize(int size){
+    public LinkedListFixedSize(int size) {
         this.size = size;
         this.head = new Node<T>(null);
         this.currentNode = null;
         Node<T> current = head;
-        for(int i = 1; i < size; i++){
+        for(int i = 1; i < size; i++) {
             current.setNextNode(new Node<T>(null));
             current = current.getNextNode();
         }
@@ -26,10 +26,10 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     @Override
     public void add(T value) {
         Node<T> current = this.head;
-        while(current != null && current.getValue() != null){
+        while(current != null && current.getValue() != null) {
             current = current.getNextNode();
         }
-        if(current != null){
+        if(current != null) {
             current.setValue(value);
         }
     }
@@ -37,12 +37,12 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     @Override
     public boolean contains(T value) {
         Node<T> current = this.head;
-        while(current != null && 
-              (
-                current.getValue() == null || 
-                !current.getValue().equals(value)
-              )
-            ){
+        while(current != null &&
+                (
+                        current.getValue() == null ||
+                                !current.getValue().equals(value)
+                )
+        ) {
             current = current.getNextNode();
         }
         return (current != null);
@@ -51,12 +51,12 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     @Override
     public void remove(T value) throws NoSuchElementException {
         Node<T> current = this.head;
-        while(current != null && 
-              (
-                current.getValue() == null || 
-                !current.getValue().equals(value)
-              )
-            ){
+        while(current != null &&
+                (
+                        current.getValue() == null ||
+                                !current.getValue().equals(value)
+                )
+        ) {
             current = current.getNextNode();
         }
         if(current == null)
@@ -69,22 +69,21 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
         if(this.currentNode == null)
             this.currentNode = this.head;
         int i = 0;
-        while(this.currentNode.getValue() == null && i < 2){
+        while(this.currentNode.getValue() == null && i < 2) {
             this.currentNode = this.currentNode.getNextNode();
-            if(this.currentNode == null){
+            if(this.currentNode == null) {
                 this.currentNode = this.head;
                 i++;
             }
         }
 
-        if(i >= 2){
+        if(i >= 2) {
             return null;
         }
 
-        T value = (T) currentNode.getValue();
-        this.currentNode = this.currentNode.getNextNode();
-        while(this.currentNode != null && this.currentNode.getValue() == null)
-            this.currentNode = this.currentNode.getNextNode();
+        T value = currentNode.getValue();
+        do this.currentNode = this.currentNode.getNextNode();
+        while(this.currentNode != null && this.currentNode.getValue() == null);
         return value;
     }
 
@@ -95,7 +94,7 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
         Node<T> current;
         prev = null;
         current = this.head;
-        while(current != null){
+        while(current != null) {
             next = current.getNextNode();
             current.setNextNode(prev);
             prev = current;
@@ -113,14 +112,14 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     public T getAt(int index) throws IndexOutOfBoundsException {
         int i = 0;
         Node<T> current = this.head;
-        while(i < index){
+        while(i < index) {
             current = current.getNextNode();
-            if(current == null){
+            if(current == null) {
                 throw new IndexOutOfBoundsException(index);
             }
             i++;
         }
-        return (T) current.getValue();
+        return current.getValue();
     }
 
     @Override
@@ -131,9 +130,9 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
     public boolean isFull() {
         boolean isFull = true;
         int i = 0;
-        Node<T> current = this.head; 
+        Node<T> current = this.head;
 
-        while(isFull && i < this.size){
+        while(isFull && i < this.size) {
             if(current.getValue() == null)
                 isFull = false;
             current = current.getNextNode();
@@ -141,5 +140,5 @@ public class LinkedListFixedSize<T> implements LinkedListInterface<T> {
         }
         return isFull;
     }
-    
+
 }

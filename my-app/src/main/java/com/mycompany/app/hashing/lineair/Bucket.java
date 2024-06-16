@@ -5,11 +5,11 @@ import java.util.NoSuchElementException;
 import com.mycompany.app.linkedlist.fixedsize.LinkedListFixedSize;
 
 public class Bucket<K, V> {
-    private int size;
+    private final int size;
 
     private Bucket<K,V> overflowBucket;
 
-    private LinkedListFixedSize<BucketItem<K,V>> items;
+    private final LinkedListFixedSize<BucketItem<K,V>> items;
 
     public Bucket(int size){
         this.size = size;

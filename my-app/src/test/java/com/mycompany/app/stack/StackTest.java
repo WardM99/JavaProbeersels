@@ -1,14 +1,11 @@
 package com.mycompany.app.stack;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.EmptyStackException;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StackTest {
     private Stack<Integer> s;
@@ -17,9 +14,9 @@ public class StackTest {
     public void setUp() {
         s = new Stack<>();
     }
-    
+
     @Test
-    public void basicTests(){
+    public void basicTests() {
         s.push(5);
         s.push(6);
 
@@ -29,26 +26,26 @@ public class StackTest {
         assertEquals(6, valuePeek);
         assertEquals(6, valuePop);
 
-        assertTrue(valuePeek == valuePop);
+        assertEquals(valuePeek, valuePop);
 
         valuePeek = s.peek();
         assertEquals(5, valuePeek);
     }
 
     @Test
-    public void peekEmptyStackTest(){
+    public void peekEmptyStackTest() {
         Integer valuePeek = s.peek();
 
         assertNull(valuePeek);
     }
 
     @Test
-    public void popEmptyStackTest(){
+    public void popEmptyStackTest() {
         assertThrows(EmptyStackException.class, () -> {
             s.pop();
         });
     }
-    
+
     @Test
     public void testPushAndPopMixed() {
         s.push(100);

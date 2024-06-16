@@ -3,19 +3,19 @@ package com.mycompany.app.linkedlist;
 import java.util.NoSuchElementException;
 
 public interface LinkedListInterface<T> {
-    public void add(T value);
+    void add(T value);
 
-    public boolean contains(T value);
+    boolean contains(T value);
 
-    public void remove(T value) throws NoSuchElementException;
+    void remove(T value) throws NoSuchElementException;
     
-    public T getNext();
+    T getNext();
 
-    public void reverseLinkedList();
+    void reverseLinkedList();
 
-    public int size();
+    int size();
 
-    public T getAt(int index) throws IndexOutOfBoundsException;
+    T getAt(int index) throws IndexOutOfBoundsException;
     
-    public Node<T> getHead();
+    Node<T> getHead();
 }

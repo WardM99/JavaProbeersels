@@ -4,11 +4,11 @@ import com.mycompany.app.hashing.lineair.LineairHashMap;
 import com.mycompany.app.trie.NodeInterface;
 
 public class HashMapTrieNode implements NodeInterface {
-    private LineairHashMap<Character, NodeInterface> map;
+    private final LineairHashMap<Character, NodeInterface> map;
 
-    private String word;
+    private final String word;
 
-    private boolean leaf;
+    private final boolean leaf;
 
     public HashMapTrieNode(boolean leaf, String word){
         this.leaf = leaf;

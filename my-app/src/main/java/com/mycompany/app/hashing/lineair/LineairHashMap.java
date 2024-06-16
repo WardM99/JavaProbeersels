@@ -11,7 +11,7 @@ public class LineairHashMap<K, V> implements HashmapInterface<K, V> {
 
     private final int BUCKETSIZE = 2;
 
-    private LinkedList<Bucket<K,V>> buckets;
+    private final LinkedList<Bucket<K,V>> buckets;
 
     private int n = 2;
 

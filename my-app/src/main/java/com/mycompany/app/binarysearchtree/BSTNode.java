@@ -5,7 +5,7 @@ public class BSTNode<T> implements BSTNodeInterface<T> {
 
     private BSTNodeInterface<T> rightNode;
     
-    private Comparable<T> value;
+    private final Comparable<T> value;
 
     public BSTNode(Comparable<T> value){
         this.value = value;
